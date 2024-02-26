@@ -3,21 +3,44 @@ using UnityEngine;
 public class ColorDetection : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
     void Update()
     {
-
+        /*if (Input.GetMouseButton(0))
+        {
+            ScreenCapture.CaptureScreenshot("MyScreenShot.png");
+            Debug.Log("ScreenShot Taken");
+        }
+        // print (Input.mousePosition);
     }
-    void ColorDetectionByInput()
+
+    void moonrake()
     {
-        if (Input.touchCount > 0)
-        { Touch touch = Input.GetTouch(0); }
-
+        mpos = Input.mousePosition;
+        var ray = Camera.main.ScreenPointToRay(mpos);
+        var cube : GameObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        cube.transform.localScale = Vector3(20, 20, 1);
+        cube.transform.position = Vector3(0, 0.5, 0);
+        cube.transform.LookAt(camera.main.transform, Vector3.up);
+        Destroy(cube.renderer.material);
+        sshot();
 
     }
+
+    void sshot()
+    {
+        var tex = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, false);
+        yield WaitForEndOfFrame();
+        tex.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
+        tex.Apply();
+
+        var bla = tex.GetPixel(mpos.x, mpos.y);
+        print(bla);
+
+
+        //Destroy (tex);
+
+        //return tex;
+   */
+    }
+
 }

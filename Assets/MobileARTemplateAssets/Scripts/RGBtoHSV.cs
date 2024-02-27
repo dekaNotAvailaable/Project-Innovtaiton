@@ -2,12 +2,9 @@ using UnityEngine;
 
 public class RGBAToHSVConverter : MonoBehaviour
 {
-    private void Start()
-    {
-        //Color rgbaColor = new Color(1f, 1f, 1f, 1.000f);
-        //Color hsvColor = RGBAtoHSV(rgbaColor);
-
-    }
+    public static float hue;
+    public static float saturation;
+    public static float value;
 
     public static Color RGBAtoHSV(Color rgba)
     {
@@ -31,8 +28,10 @@ public class RGBAToHSVConverter : MonoBehaviour
                 h = (rgba.r - rgba.g) / delta + 4;
             h /= 6;
         }
-        Debug.Log("Hue (H): " + h + "Saturation (S): " + s + "Value (V): " + v);
-        return new Color(h, s, v);
-
+        hue = h;
+        saturation = s;
+        value = v;
+        Debug.Log("Hue (H): " + hue + "Saturation (S): " + saturation + "Value (V): " + value);
+        return new Color(hue, saturation, value);
     }
 }

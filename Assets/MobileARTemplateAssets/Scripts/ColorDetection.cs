@@ -1,19 +1,25 @@
+using TMPro;
 using UnityEngine;
 
 public class ColorDetection : MonoBehaviour
 {
-    // Start is called before the first frame update
     public Texture2D texture;
     [HideInInspector]
     public Color pixelColor;
-    private void Awake()
+    public TextMeshProUGUI debugText;
+    public void AnalyzePixelColorAtCenter()
     {
-    }
-    private void Start()
-    {
+        byte[] imageData = System.IO.File.ReadAllBytes(Application.persistentDataPath + "/photo.png");
+        Texture2D loadedTexture = new Texture2D(2, 2);
+        loadedTexture.LoadImage(imageData);
+        texture = loadedTexture;
+        debugText.gameObject.SetActive(false);
+        Debug.Log("start function for color detection");
         pixelColor = ReadPixel(texture.width / 2, texture.height / 2);
         RGBAToHSVConverter.RGBAtoHSV(pixelColor);
         Debug.Log("Pixel color at (texture.width/2, texute.height/2): " + pixelColor);
+        debugText.gameObject.SetActive(true);
+        debugText.text = $"Hue: {RGBAToHSVConverter.hue}\nSaturation: {RGBAToHSVConverter.saturation}\nValue: {RGBAToHSVConverter.value}\n{pixelColor}";
     }
     Color ReadPixel(int x, int y)
     {
@@ -27,6 +33,5 @@ public class ColorDetection : MonoBehaviour
             return Color.clear;
         }
     }
-
 }
 

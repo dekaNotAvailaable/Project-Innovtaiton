@@ -8,6 +8,18 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 4755b35b590504809a7525fd2109c2e2
+  - enabled: 1
+    path: Assets/Scenes/Main Menu.unity
+    guid: f144bed0ab19997489a683df600015c6
+  - enabled: 1
+    path: Assets/Scenes/Level selection.unity
+    guid: f0f7a1c08d70d0b4e8723c2fbde59d6f
+  - enabled: 1
+    path: Assets/Scenes/Level 1.unity
+    guid: 7a93e8f27d5be9940b6898d68476a6df
+  - enabled: 1
+    path: Assets/Scenes/Settings.unity
+    guid: 1d70721fe862cb84e8822db95ac55b18
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 100b84ec0d3ec85418bbaedeb0704975,
       type: 2}

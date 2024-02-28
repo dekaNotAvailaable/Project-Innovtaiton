@@ -7,6 +7,11 @@ public class ColorDetection : MonoBehaviour
     [HideInInspector]
     public Color pixelColor;
     public Image myScanedColor;
+
+    private void Start()
+    {
+        myScanedColor.color = new Vector4(255, 255, 255, 0);
+    }
     public void AnalyzePixelColorAtCenter()
     {
         byte[] imageData = System.IO.File.ReadAllBytes(Application.persistentDataPath + "/photo.png");

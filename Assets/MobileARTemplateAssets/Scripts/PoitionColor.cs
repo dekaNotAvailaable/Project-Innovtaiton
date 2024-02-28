@@ -26,7 +26,15 @@ public class PoitionColor : MonoBehaviour
             }
         }
     }
+    public void DestroyPotions(int i)
+    {
+        if (Potions != null)
 
+        {
+            Destroy(Potions[i].gameObject);
+        }
+
+    }
     // Method to get the color of a specific potion
     public Color GetPotionColor(int potionIndex)
     {

@@ -18,7 +18,7 @@ public class PoitionColor : MonoBehaviour
             {
                 Color randomColor = Random.ColorHSV();
                 potion.color = randomColor;
-                Debug.Log("Potion color changed to: " + randomColor);
+                Debug.Log("Potion" + potion + " color changed to:" + randomColor);
             }
             else
             {

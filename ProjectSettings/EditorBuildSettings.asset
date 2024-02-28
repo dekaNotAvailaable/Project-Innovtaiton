@@ -29,6 +29,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Opponent finder.unity
     guid: 4352e2bd03cf53141859f9170731e767
+  - enabled: 1
+    path: Assets/Scenes/Character selection.unity
+    guid: 2587e76f7906f2d43b59eac5e77d9afc
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 100b84ec0d3ec85418bbaedeb0704975,
       type: 2}

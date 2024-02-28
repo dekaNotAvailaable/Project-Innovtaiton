@@ -46,14 +46,15 @@ public class CameraController : MonoBehaviour
             photo.Apply();
             byte[] bytes = photo.EncodeToPNG();
             System.IO.File.WriteAllBytes(Application.persistentDataPath + "/photo.png", bytes);
-            Debug.LogError("Photo saved.");
+            AnalyzeLastPhoto();
+            Debug.LogError("Object color analyzed.");
         }
         else
         {
             Debug.LogError("Camera is not active.");
         }
     }
-    public void AnalyzeLastPhoto()
+    private void AnalyzeLastPhoto()
     {
         colorDetection.AnalyzePixelColorAtCenter();
     }

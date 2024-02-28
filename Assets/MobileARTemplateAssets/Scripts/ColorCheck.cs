@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class ColorCheck : MonoBehaviour
@@ -6,11 +7,13 @@ public class ColorCheck : MonoBehaviour
     public int colorIndex;
     PoitionColor poitionColor;
     ColorDetection colorDetection;
+    public TextMeshProUGUI debugText;
 
     void Start()
     {
         poitionColor = FindObjectOfType<PoitionColor>();
         colorDetection = FindObjectOfType<ColorDetection>();
+        debugText.gameObject.SetActive(false);
     }
 
     public void CheckColor()
@@ -22,10 +25,16 @@ public class ColorCheck : MonoBehaviour
             if (ColorApproximatelyEqual(detectedColor, potionColor))
             {
                 Debug.Log($"Detected color matches Potion {i + 1} color!");
+                debugText.gameObject.SetActive(true);
+                debugText.color = Color.green;
+                debugText.text = $"Detected color matches Potion {i + 1} color!";
                 return;
             }
         }
+        debugText.gameObject.SetActive(true);
         Debug.Log("Detected color does not match any potion color.");
+        debugText.color = Color.red;
+        debugText.text = "Detected color does not match any potion color.";
     }
     bool ColorApproximatelyEqual(Color color1, Color color2)
     {

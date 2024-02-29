@@ -27,23 +27,20 @@ public class CameraController : MonoBehaviour
         {
             Debug.LogError("No camera found on this device.");
         }
-        ToggleCamera();
+        //ToggleCamera();
     }
     public void ToggleCamera()
     {
-        //if (webcamTexture.isPlaying)
-        //{
-        //    webcamTexture.Stop();
-        //    cameraDisplay.gameObject.SetActive(false);
-        //}
-        //else
-        //{
-        if (!webcamTexture.isPlaying)
+        if (webcamTexture.isPlaying)
+        {
+            webcamTexture.Stop();
+            cameraDisplay.gameObject.SetActive(false);
+        }
+        else
         {
             webcamTexture.Play();
             cameraDisplay.gameObject.SetActive(true);
         }
-        //}
     }
     public void TakePhoto()
     {

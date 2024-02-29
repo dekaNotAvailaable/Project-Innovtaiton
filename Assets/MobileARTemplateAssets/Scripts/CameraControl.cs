@@ -8,10 +8,15 @@ public class CameraController : MonoBehaviour
     [HideInInspector]
     public int photoIndex;
     ColorDetection colorDetection;
+    ColorCheck colorCheck;
+    private void Awake()
+    {
+
+    }
     void Start()
     {
         colorDetection = FindAnyObjectByType<ColorDetection>();
-        cameraDisplay.gameObject.SetActive(false);
+        colorCheck = FindAnyObjectByType<ColorCheck>();
         if (WebCamTexture.devices.Length > 0)
         {
             webcamTexture = new WebCamTexture();
@@ -22,20 +27,23 @@ public class CameraController : MonoBehaviour
         {
             Debug.LogError("No camera found on this device.");
         }
+        ToggleCamera();
     }
     public void ToggleCamera()
     {
-        if (webcamTexture.isPlaying)
+        //if (webcamTexture.isPlaying)
+        //{
+        //    webcamTexture.Stop();
+        //    cameraDisplay.gameObject.SetActive(false);
+        //}
+        //else
+        //{
+        if (!webcamTexture.isPlaying)
         {
-            webcamTexture.Stop();
-            cameraDisplay.gameObject.SetActive(false);
-        }
-        else
-        {
-            Debug.LogError(" camera start.");
             webcamTexture.Play();
             cameraDisplay.gameObject.SetActive(true);
         }
+        //}
     }
     public void TakePhoto()
     {
@@ -47,6 +55,7 @@ public class CameraController : MonoBehaviour
             byte[] bytes = photo.EncodeToPNG();
             System.IO.File.WriteAllBytes(Application.persistentDataPath + "/photo.png", bytes);
             AnalyzeLastPhoto();
+            colorCheck.CheckColor();
             Debug.LogError("Object color analyzed.");
         }
         else

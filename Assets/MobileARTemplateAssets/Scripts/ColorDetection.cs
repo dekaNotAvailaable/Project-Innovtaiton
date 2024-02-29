@@ -1,52 +1,39 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ColorDetection : MonoBehaviour
 {
     public Texture2D texture;
-    public string deka;
-    // Start is called before the first frame update
-    void Update()
+    [HideInInspector]
+    public Color pixelColor;
+    public Image myScanedColor;
+
+    private void Start()
     {
-        print("TOuch COunt:" + Input.touchCount);
+        myScanedColor.color = new Vector4(255, 255, 255, 0);
     }
-
-
-
-
-    /*if (Input.GetMouseButton(0))
-       {
-           ScreenCapture.CaptureScreenshot("MyScreenShot.png");
-           Debug.Log("ScreenShot Taken");
-       }
-       // print (Input.mousePosition);
-   }
-
-   void moonrake()
-   {
-       mpos = Input.mousePosition;
-       var ray = Camera.main.ScreenPointToRay(mpos);
-       var cube : GameObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
-       cube.transform.localScale = Vector3(20, 20, 1);
-       cube.transform.position = Vector3(0, 0.5, 0);
-       cube.transform.LookAt(camera.main.transform, Vector3.up);
-       Destroy(cube.renderer.material);
-       sshot();
-
-   }
-
-   void sshot()
-   {
-       var tex = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, false);
-       yield WaitForEndOfFrame();
-       tex.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
-       tex.Apply();
-
-       var bla = tex.GetPixel(mpos.x, mpos.y);
-       print(bla);
-
-
-       //Destroy (tex);
-
-       //return tex;
-  */
+    public void AnalyzePixelColorAtCenter()
+    {
+        byte[] imageData = System.IO.File.ReadAllBytes(Application.persistentDataPath + "/photo.png");
+        Texture2D loadedTexture = new Texture2D(2, 2);
+        loadedTexture.LoadImage(imageData);
+        texture = loadedTexture;
+        pixelColor = ReadPixel(texture.width / 2, texture.height / 2);
+        RGBAToHSVConverter.RGBAtoHSV(pixelColor);
+        Debug.Log("Pixel color at (texture.width/2, texute.height/2): " + pixelColor);
+        myScanedColor.color = pixelColor;
+    }
+    Color ReadPixel(int x, int y)
+    {
+        if (texture != null && x >= 0 && x < texture.width && y >= 0 && y < texture.height)
+        {
+            return texture.GetPixel(x, y);
+        }
+        else
+        {
+            Debug.LogError("Invalid pixel coordinates or texture is not assigned.");
+            return Color.clear;
+        }
+    }
 }
+

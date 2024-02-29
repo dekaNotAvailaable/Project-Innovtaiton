@@ -11,33 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main Menu.unity
     guid: f144bed0ab19997489a683df600015c6
-  - enabled: 1
-    path: Assets/Scenes/Level selection.unity
-    guid: f0f7a1c08d70d0b4e8723c2fbde59d6f
-  - enabled: 1
-    path: Assets/Scenes/Level 1.unity
-    guid: 7a93e8f27d5be9940b6898d68476a6df
-  - enabled: 1
-    path: Assets/Scenes/Settings.unity
-    guid: 1d70721fe862cb84e8822db95ac55b18
-  - enabled: 1
-    path: Assets/Scenes/Camera.unity
-    guid: d893958c7f19f4c48bc06f5e8cdf4800
-  - enabled: 1
-    path: Assets/Scenes/Menu.unity
-    guid: 23876df0b91467742824b91ab2796b02
-  - enabled: 1
-    path: Assets/Scenes/Opponent finder.unity
-    guid: 4352e2bd03cf53141859f9170731e767
-  - enabled: 1
-    path: Assets/Scenes/Character selection.unity
-    guid: 2587e76f7906f2d43b59eac5e77d9afc
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 100b84ec0d3ec85418bbaedeb0704975,
       type: 2}
     UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: 822330972f3e8d74ebeea09aabfa3598,
-      type: 2}
-    com.unity.input.settings: {fileID: 11400000, guid: 993efed57906b0648b92e63a8fc598d6,
       type: 2}
     com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: 9a508a06ed98f6d42b2f303b0c96c560,
       type: 2}

@@ -27,6 +27,11 @@ public class CameraController : MonoBehaviour
         {
             Debug.LogError("No camera found on this device.");
         }
+        if (!webcamTexture.isPlaying)
+        {
+            webcamTexture.Play();
+            cameraDisplay.gameObject.SetActive(true);
+        }
         //ToggleCamera();
     }
     public void ToggleCamera()
@@ -35,11 +40,6 @@ public class CameraController : MonoBehaviour
         {
             webcamTexture.Stop();
             cameraDisplay.gameObject.SetActive(false);
-        }
-        else
-        {
-            webcamTexture.Play();
-            cameraDisplay.gameObject.SetActive(true);
         }
     }
     public void TakePhoto()

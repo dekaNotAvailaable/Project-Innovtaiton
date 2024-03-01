@@ -9,6 +9,7 @@ public class CameraController : MonoBehaviour
     [HideInInspector]
     public int photoIndex;
     ColorDetection colorDetection;
+    ColorCheck colorCheck;
     public AspectRatioFitter fitter;
     void Start()
     {

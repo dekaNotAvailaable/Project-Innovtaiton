@@ -39,7 +39,7 @@ public class ColorCheck : MonoBehaviour
     }
     bool ColorApproximatelyEqual(Color color1, Color color2)
     {
-        float tolerance = 0.05f;
+        float tolerance = 0.25f;
         bool redMatch = Mathf.Abs(color1.r - color2.r) <= tolerance;
         bool greenMatch = Mathf.Abs(color1.g - color2.g) <= tolerance;
         bool blueMatch = Mathf.Abs(color1.b - color2.b) <= tolerance;

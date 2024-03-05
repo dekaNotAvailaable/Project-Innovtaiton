@@ -9,27 +9,26 @@ public class ColorCheck : MonoBehaviour
     PoitionColor poitionColor;
     ColorDetection colorDetection;
     public TextMeshProUGUI debugText;
-    public Image progressBar;
+    public TextMeshProUGUI percentageText;
     public float tolerance = 0.05f;
+
     void Start()
     {
         poitionColor = FindObjectOfType<PoitionColor>();
         colorDetection = FindObjectOfType<ColorDetection>();
         debugText.gameObject.SetActive(false);
-        if (progressBar != null)
-        {
-            Debug.LogWarning("prgoress bar is found !!!!!!!!1");
-            progressBar.fillAmount = 0;
-        }
-
+        percentageText.gameObject.SetActive(false); // Hide percentage text initially
     }
+
     public void CheckColor()
     {
         Color detectedColor = colorDetection.pixelColor;
         Color closestPotionColor = GetClosestPotionColor(detectedColor);
         float matchPercentage = CalculateMatchPercentage(detectedColor, closestPotionColor);
-        UpdateProgressBar(matchPercentage);
+        UpdatePercentageText(matchPercentage);
+
         Debug.Log(matchPercentage);
+
         for (int i = 0; i < poitionColor.Potions.Length; i++)
         {
             Color potionColor = poitionColor.GetPotionColor(i);
@@ -43,6 +42,7 @@ public class ColorCheck : MonoBehaviour
                 return;
             }
         }
+
         debugText.gameObject.SetActive(true);
         Debug.Log("Detected color does not match any potion color.");
         debugText.color = Color.red;
@@ -74,14 +74,15 @@ public class ColorCheck : MonoBehaviour
     {
         float distance = ColorDistance(detectedColor, closestPotionColor);
         float matchPercentage = Mathf.Clamp01(1 - (distance / tolerance));
-        return matchPercentage;
+        return matchPercentage * 100f; // Convert to percentage
     }
 
-    void UpdateProgressBar(float matchPercentage)
+    void UpdatePercentageText(float matchPercentage)
     {
-        if (progressBar != null)
+        if (percentageText != null)
         {
-            progressBar.fillAmount = matchPercentage;
+            percentageText.gameObject.SetActive(true);
+            percentageText.text = $"{matchPercentage.ToString("F0")}%"; // Display percentage in text
         }
     }
 

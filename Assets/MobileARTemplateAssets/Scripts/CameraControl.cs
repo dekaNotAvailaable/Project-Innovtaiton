@@ -10,9 +10,11 @@ public class CameraController : MonoBehaviour
     public int photoIndex;
     ColorDetection colorDetection;
     ColorCheck colorCheck;
+    SaturationAdjustment saturationAdjustment;
     public AspectRatioFitter fitter;
     void Start()
     {
+        saturationAdjustment = FindAnyObjectByType<SaturationAdjustment>();
         colorDetection = FindAnyObjectByType<ColorDetection>();
         colorCheck = FindAnyObjectByType<ColorCheck>();
         if (WebCamTexture.devices.Length > 0)
@@ -69,6 +71,7 @@ public class CameraController : MonoBehaviour
             byte[] bytes = photo.EncodeToPNG();
             System.IO.File.WriteAllBytes(Application.persistentDataPath + "/photo.png", bytes);
             AnalyzeLastPhoto();
+            saturationAdjustment.OrignalStoreColor();
             colorCheck.CheckColor();
             Debug.LogError("Object color analyzed.");
         }

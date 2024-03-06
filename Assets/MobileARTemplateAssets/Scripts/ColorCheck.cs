@@ -10,7 +10,7 @@ public class ColorCheck : MonoBehaviour
     ColorDetection colorDetection;
     public TextMeshProUGUI debugText;
     public TextMeshProUGUI percentageText;
-    public float tolerance = 0.05f;
+    public float tolerance = 0.2f;
 
     void Start()
     {
@@ -26,9 +26,6 @@ public class ColorCheck : MonoBehaviour
         Color closestPotionColor = GetClosestPotionColor(detectedColor);
         float matchPercentage = CalculateMatchPercentage(detectedColor, closestPotionColor);
         UpdatePercentageText(matchPercentage);
-
-        Debug.Log(matchPercentage);
-
         for (int i = 0; i < poitionColor.Potions.Length; i++)
         {
             Color potionColor = poitionColor.GetPotionColor(i);
@@ -42,7 +39,6 @@ public class ColorCheck : MonoBehaviour
                 return;
             }
         }
-
         debugText.gameObject.SetActive(true);
         Debug.Log("Detected color does not match any potion color.");
         debugText.color = Color.red;
@@ -60,20 +56,26 @@ public class ColorCheck : MonoBehaviour
             {
                 Color potionColor = potion.color;
                 float distance = ColorDistance(detectedColor, potionColor);
-                if (distance < closestDistance)
+
+                Debug.Log("distance to color to potion:" + distance + "closestDisntace:" + closestDistance);
+                Debug.Log("tolorance:" + tolerance + "distance - tolarace:" + (distance - tolerance));
+                if (distance - tolerance <= closestDistance)
                 {
                     closestDistance = distance;
                     closestColor = potionColor;
                 }
             }
         }
+        Debug.Log("closest color :" + closestColor);
+        percentageText.color = closestColor;
         return closestColor;
     }
 
     float CalculateMatchPercentage(Color detectedColor, Color closestPotionColor)
     {
         float distance = ColorDistance(detectedColor, closestPotionColor);
-        float matchPercentage = Mathf.Clamp01(1 - (distance / tolerance));
+        float matchPercentage = 1 - Mathf.Clamp01(distance / tolerance);
+        Debug.Log("match percentage:" + matchPercentage);
         return matchPercentage * 100f; // Convert to percentage
     }
 
@@ -82,7 +84,11 @@ public class ColorCheck : MonoBehaviour
         if (percentageText != null)
         {
             percentageText.gameObject.SetActive(true);
-            percentageText.text = $"{matchPercentage.ToString("F0")}%"; // Display percentage in text
+
+            // Convert the match percentage to a string with the fractional part included
+            string percentageString = $"{matchPercentage:F2}%"; // Displays up to 2 decimal places
+
+            percentageText.text = percentageString; // Display the percentage in text
         }
     }
 

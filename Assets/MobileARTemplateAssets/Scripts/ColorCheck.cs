@@ -77,6 +77,7 @@ public class ColorCheck : MonoBehaviour
         float matchPercentage = 1 - Mathf.Clamp01(distance / tolerance);
         Debug.Log("match percentage:" + matchPercentage);
         return matchPercentage * 100f; // Convert to percentage
+        if (matchPercentage < 0) { percentageText.color = Color.white; }
     }
 
     void UpdatePercentageText(float matchPercentage)

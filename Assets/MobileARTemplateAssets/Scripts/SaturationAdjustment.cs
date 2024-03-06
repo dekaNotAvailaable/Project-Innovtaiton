@@ -15,7 +15,7 @@ public class SaturationAdjustment : MonoBehaviour
     }
     private void Start()
     {
-        saturationSlider.value = 1f;
+        saturationSlider.value = 0.5f;
         saturationSlider.onValueChanged.AddListener(AdjustSaturation);
         saturationSlider.onValueChanged.AddListener(delegate { colorCheck.CheckColor(); });
     }

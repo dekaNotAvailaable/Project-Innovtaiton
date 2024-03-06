@@ -2049,6 +2049,11 @@ MonoBehaviour:
   - {fileID: 1669003569}
   - {fileID: 144986645}
   - {fileID: 1511403833}
+  potionColors:
+  - {r: NaN, g: NaN, b: NaN, a: 0}
+  - {r: NaN, g: NaN, b: NaN, a: 0}
+  - {r: 1, g: 0.15408784, b: 0.15408784, a: 0}
+  - {r: NaN, g: NaN, b: NaN, a: 0}
 --- !u!1 &1764718299
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,6 +5,7 @@ public class PoitionColor : MonoBehaviour
 {
     public Image[] Potions;
     private int activePotionCount; // Counter for active potions
+    public Color[] potionColors;
 
     void Start()
     {
@@ -18,7 +19,9 @@ public class PoitionColor : MonoBehaviour
         {
             if (potion != null)
             {
-                Color randomColor = Random.ColorHSV();
+                // Get a random color from the predefined set of RGB colors
+                Color randomColor = potionColors[Random.Range(0, potionColors.Length)];
+                randomColor.a = 1;
                 potion.color = randomColor;
                 Debug.Log("Potion " + potion + " color changed to: " + randomColor);
             }

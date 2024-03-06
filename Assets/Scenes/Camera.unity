@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2050,10 +2050,10 @@ MonoBehaviour:
   - {fileID: 144986645}
   - {fileID: 1511403833}
   potionColors:
-  - {r: NaN, g: NaN, b: NaN, a: 0}
+  - {r: 0.101960786, g: 0.61960787, b: 0.5254902, a: 0}
   - {r: NaN, g: NaN, b: NaN, a: 0}
   - {r: 1, g: 0.15408784, b: 0.15408784, a: 0}
-  - {r: NaN, g: NaN, b: NaN, a: 0}
+  - {r: 1, g: 0.15408784, b: 0.15408784, a: 0}
 --- !u!1 &1764718299
 GameObject:
   m_ObjectHideFlags: 0

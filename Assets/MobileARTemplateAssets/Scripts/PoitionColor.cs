@@ -6,15 +6,28 @@ public class PoitionColor : MonoBehaviour
     public Image[] Potions;
     private int activePotionCount; // Counter for active potions
     public Color[] potionColors;
+    private SoundEffects effects;
+    private bool isRunOnStart;
 
     void Start()
     {
+        isRunOnStart = true;
+        effects = FindAnyObjectByType<SoundEffects>();
         ReassignPotionColors();
         activePotionCount = Potions.Length; // Set initial active potion count
     }
 
     public void ReassignPotionColors()
     {
+        if (isRunOnStart)
+        {
+            isRunOnStart = false;
+        }
+        else
+        {
+            effects.ButtonSoundPlay();
+        }
+
         foreach (Image potion in Potions)
         {
             if (potion != null)

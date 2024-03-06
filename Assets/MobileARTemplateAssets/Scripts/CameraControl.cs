@@ -5,6 +5,7 @@ public class CameraController : MonoBehaviour
 {
     public RawImage cameraDisplay;
     private WebCamTexture webcamTexture;
+    private SoundEffects soundEffects;
     private bool cameraActive;
     [HideInInspector]
     public int photoIndex;
@@ -14,6 +15,7 @@ public class CameraController : MonoBehaviour
     public AspectRatioFitter fitter;
     void Start()
     {
+        soundEffects = FindAnyObjectByType<SoundEffects>();
         saturationAdjustment = FindAnyObjectByType<SaturationAdjustment>();
         colorDetection = FindAnyObjectByType<ColorDetection>();
         colorCheck = FindAnyObjectByType<ColorCheck>();
@@ -37,8 +39,6 @@ public class CameraController : MonoBehaviour
             webcamTexture.Play();
             cameraDisplay.gameObject.SetActive(true);
         }
-        //ToggleCamera();
-
     }
     private void Update()
     {
@@ -65,6 +65,7 @@ public class CameraController : MonoBehaviour
     {
         if (webcamTexture.isPlaying)
         {
+            soundEffects.shutterSound.Play();
             Texture2D photo = new Texture2D(webcamTexture.width, webcamTexture.height);
             photo.SetPixels(webcamTexture.GetPixels());
             photo.Apply();

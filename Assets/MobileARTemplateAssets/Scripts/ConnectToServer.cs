@@ -1,3 +1,4 @@
+using Photon.Pun;
 using UnityEngine.SceneManagement;
 
 public class ConnectToServer : MonoBehaviourPunCallbacks

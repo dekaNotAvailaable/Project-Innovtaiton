@@ -450,7 +450,6 @@ GameObject:
   - component: {fileID: 272401148}
   - component: {fileID: 272401147}
   - component: {fileID: 272401149}
-  - component: {fileID: 272401151}
   - component: {fileID: 272401150}
   m_Layer: 5
   m_Name: RawImage
@@ -543,20 +542,6 @@ MonoBehaviour:
   debugText: {fileID: 1408804107}
   percentageText: {fileID: 492303174}
   tolerance: 0.2
---- !u!114 &272401151
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 272401145}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d9d78db32740e84aaff47aaf9b79a83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  crossHair: {fileID: 330792326}
-  rawImage: {fileID: 272401147}
 --- !u!1 &330792324
 GameObject:
   m_ObjectHideFlags: 0
@@ -631,6 +616,81 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330792324}
+  m_CullTransparentMesh: 1
+--- !u!1 &368604765
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 368604766}
+  - component: {fileID: 368604768}
+  - component: {fileID: 368604767}
+  m_Layer: 5
+  m_Name: freezeImage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &368604766
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 368604765}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 30, y: 30, z: 30}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1764718303}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -1200, y: -2760}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &368604767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 368604765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.6901961, g: 0.8784314, b: 0.9019608, a: 0.43137255}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &368604768
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 368604765}
   m_CullTransparentMesh: 1
 --- !u!1 &492303172
 GameObject:
@@ -778,6 +838,7 @@ GameObject:
   - component: {fileID: 561791874}
   - component: {fileID: 561791873}
   - component: {fileID: 561791876}
+  - component: {fileID: 561791877}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -848,6 +909,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundEffects: {fileID: 1826616110}
+--- !u!114 &561791877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 561791872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ce9c86dc196724468c7ae2d547d4160, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  freezeImage: {fileID: 368604767}
+  freezeDuration: 30
 --- !u!1 &626860702
 GameObject:
   m_ObjectHideFlags: 0
@@ -1261,6 +1336,7 @@ GameObject:
   - component: {fileID: 1392083404}
   - component: {fileID: 1392083406}
   - component: {fileID: 1392083405}
+  - component: {fileID: 1392083407}
   m_Layer: 5
   m_Name: rawImageHolder
   m_TagString: Untagged
@@ -1327,6 +1403,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1392083403}
   m_CullTransparentMesh: 1
+--- !u!114 &1392083407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1392083403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d9d78db32740e84aaff47aaf9b79a83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  crossHair: {fileID: 330792326}
+  colorDetection: {fileID: 1764718304}
 --- !u!1 &1408804105
 GameObject:
   m_ObjectHideFlags: 0
@@ -2092,6 +2182,7 @@ RectTransform:
   - {fileID: 144925657}
   - {fileID: 1292996965}
   - {fileID: 492303173}
+  - {fileID: 368604766}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2399,6 +2490,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1764718305}
         m_TargetAssemblyTypeName: CameraController, Assembly-CSharp
         m_MethodName: TakePhoto
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 561791877}
+        m_TargetAssemblyTypeName: FreezePotion, Assembly-CSharp
+        m_MethodName: ApplyFreezePotion
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

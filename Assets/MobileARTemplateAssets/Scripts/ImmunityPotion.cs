@@ -6,16 +6,17 @@ public class ImmunityPotion : MonoBehaviour
     private bool immunityActive = false;
     public Image immuntyImage;
     public int immunitySec;
-
-    // Method to apply immunity effect
+    private SoundEffects soundEffects;
     private void Start()
     {
-        immuntyImage.gameObject.SetActive(false);
+        soundEffects = FindAnyObjectByType<SoundEffects>();
+        immuntyImage.enabled = false;
     }
     public void ApplyImmunity()
     {
         immunityActive = true;
-        immuntyImage.gameObject.SetActive(true);
+        immuntyImage.enabled = true;
+        soundEffects.shieldSoundPlay(true);
         Debug.Log("Immunity potion applied.");
         StartCoroutine(RemoveEffectAfterTime());
     }
@@ -24,14 +25,13 @@ public class ImmunityPotion : MonoBehaviour
         yield return new WaitForSeconds(immunitySec);
         RemoveImmunity();
     }
-    // Method to remove immunity effect
     private void RemoveImmunity()
     {
         immunityActive = false;
+        immuntyImage.enabled = false;
         Debug.Log("Immunity potion removed.");
+        soundEffects.shieldSoundPlay(false);
     }
-
-    // Method to check if immunity is active
     public bool IsImmunityActive()
     {
         return immunityActive;

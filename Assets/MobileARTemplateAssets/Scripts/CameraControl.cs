@@ -5,14 +5,18 @@ public class CameraController : MonoBehaviour
 {
     public RawImage cameraDisplay;
     private WebCamTexture webcamTexture;
+    private SoundEffects soundEffects;
     private bool cameraActive;
     [HideInInspector]
     public int photoIndex;
     ColorDetection colorDetection;
     ColorCheck colorCheck;
+    SaturationAdjustment saturationAdjustment;
     public AspectRatioFitter fitter;
     void Start()
     {
+        soundEffects = FindAnyObjectByType<SoundEffects>();
+        saturationAdjustment = FindAnyObjectByType<SaturationAdjustment>();
         colorDetection = FindAnyObjectByType<ColorDetection>();
         colorCheck = FindAnyObjectByType<ColorCheck>();
         if (WebCamTexture.devices.Length > 0)
@@ -22,7 +26,7 @@ public class CameraController : MonoBehaviour
             Debug.LogError("camera found on this device.");
             cameraActive = true;
             Debug.LogError(" camera start.");
-            webcamTexture.Play();
+            WebCamTexturePlayer(0);
             cameraDisplay.gameObject.SetActive(true);
         }
         else
@@ -32,10 +36,24 @@ public class CameraController : MonoBehaviour
         }
         if (!webcamTexture.isPlaying)
         {
-            webcamTexture.Play();
+            WebCamTexturePlayer(0);
             cameraDisplay.gameObject.SetActive(true);
         }
-        //ToggleCamera();
+    }
+    public void WebCamTexturePlayer(int value)
+    {
+        if (value == 0)
+        {
+            webcamTexture.Play();
+        }
+        else if (value == 1)
+        {
+            webcamTexture.Pause();
+        }
+        else if (value == 2)
+        {
+            webcamTexture.Stop();
+        }
 
     }
     private void Update()
@@ -55,7 +73,7 @@ public class CameraController : MonoBehaviour
     {
         if (webcamTexture.isPlaying)
         {
-            webcamTexture.Stop();
+            WebCamTexturePlayer(2);
             cameraDisplay.gameObject.SetActive(false);
         }
     }
@@ -63,12 +81,14 @@ public class CameraController : MonoBehaviour
     {
         if (webcamTexture.isPlaying)
         {
+            soundEffects.shutterSound.Play();
             Texture2D photo = new Texture2D(webcamTexture.width, webcamTexture.height);
             photo.SetPixels(webcamTexture.GetPixels());
             photo.Apply();
             byte[] bytes = photo.EncodeToPNG();
             System.IO.File.WriteAllBytes(Application.persistentDataPath + "/photo.png", bytes);
             AnalyzeLastPhoto();
+            saturationAdjustment.OrignalStoreColor();
             colorCheck.CheckColor();
             Debug.LogError("Object color analyzed.");
         }

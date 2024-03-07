@@ -52,6 +52,7 @@ public class PoitionColor : MonoBehaviour
             Destroy(Potions[i].gameObject);
             activePotionCount--; // Decrement active potion count
             Debug.Log("Potion " + i + " destroyed. Active potions remaining: " + activePotionCount);
+            effects.FoundPotionSound();
         }
         else
         {

@@ -4,11 +4,29 @@ public class SoundEffects : MonoBehaviour
 {
     public AudioSource buttonSound;
     public AudioSource shutterSound;
+    public AudioSource potionFound;
+    public AudioSource shieldSound;
+    private void Start()
+    {
+        shieldSound.loop = true;
+        potionFound.volume = 1.0f;
+        shutterSound.volume = 1.0f;
+    }
+    public void shieldSoundPlay()
+    {
+        shieldSound.Play();
+    }
+    public void FoundPotionSound()
+    {
+        if (potionFound != null)
+        {
 
-
+            potionFound.Play();
+        }
+    }
     public void ShutterSound()
     {
-        shutterSound.volume = 1.0f;
+
         if (shutterSound != null)
         {
             shutterSound.Play();

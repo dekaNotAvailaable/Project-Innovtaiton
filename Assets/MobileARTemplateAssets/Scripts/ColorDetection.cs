@@ -12,6 +12,7 @@ public class ColorDetection : MonoBehaviour
     private void Start()
     {
         myScanedColor.color = new Vector4(255, 255, 255, 0);
+        myScanedColor.gameObject.SetActive(false);
     }
     public void AnalyzePixelColorAtCenter()
     {
@@ -23,6 +24,7 @@ public class ColorDetection : MonoBehaviour
         PixelPosition = new Vector2(texture.width / 2, texture.height / 2);
         RGBAToHSVConverter.RGBAtoHSV(pixelColor);
         Debug.Log("Pixel color at (texture.width/2, texute.height/2): " + pixelColor + "pixel position:" + PixelPosition + "screen middel:" + Screen.width / 2 + "scren height /2:" + Screen.height / 2);
+        myScanedColor.gameObject.SetActive(true);
         myScanedColor.color = pixelColor;
     }
     Color ReadPixel(int x, int y)

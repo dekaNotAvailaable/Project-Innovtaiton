@@ -661,13 +661,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 368604765}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6901961, g: 0.8784314, b: 0.9019608, a: 0.43137255}
+  m_Color: {r: 0.31933072, g: 0.90759856, b: 0.9811321, a: 0.43137255}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -839,6 +839,7 @@ GameObject:
   - component: {fileID: 561791873}
   - component: {fileID: 561791876}
   - component: {fileID: 561791877}
+  - component: {fileID: 561791878}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -923,6 +924,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   freezeImage: {fileID: 368604767}
   freezeDuration: 30
+--- !u!114 &561791878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 561791872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21b2d3a4b6aee2c44bf728801107ae54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inversionDuration: 30
 --- !u!1 &626860702
 GameObject:
   m_ObjectHideFlags: 0
@@ -2499,9 +2513,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 561791877}
-        m_TargetAssemblyTypeName: FreezePotion, Assembly-CSharp
-        m_MethodName: ApplyFreezePotion
+      - m_Target: {fileID: 561791878}
+        m_TargetAssemblyTypeName: ColorInvertPotion, Assembly-CSharp
+        m_MethodName: ApplyColorInversion
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

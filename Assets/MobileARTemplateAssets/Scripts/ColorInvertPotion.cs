@@ -1,18 +1,25 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ColorInvertPotion : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private ColorDetection colorDetect;
+    public float inversionDuration = 2f;
+    private void Start()
     {
-        
+        colorDetect = FindAnyObjectByType<ColorDetection>();
     }
-
-    // Update is called once per frame
-    void Update()
+    public void ApplyColorInversion()
     {
-        
+        StartCoroutine(InvertColorOverTime());
+    }
+    private IEnumerator InvertColorOverTime()
+    {
+        Color initialColor = colorDetect.pixelColor;
+        Color invertedColor = new Color(1 - initialColor.r, 1 - initialColor.g, 1 - initialColor.b, initialColor.a);
+        colorDetect.pixelColor = invertedColor;
+        Debug.Log("detected color :" + initialColor + " inverted:" + invertedColor + " raw value:" + colorDetect.pixelColor);
+        yield return new WaitForSeconds(inversionDuration);
+        colorDetect.pixelColor = initialColor;
     }
 }

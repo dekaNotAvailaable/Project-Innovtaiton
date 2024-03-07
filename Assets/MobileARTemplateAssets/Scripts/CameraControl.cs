@@ -26,7 +26,7 @@ public class CameraController : MonoBehaviour
             Debug.LogError("camera found on this device.");
             cameraActive = true;
             Debug.LogError(" camera start.");
-            webcamTexture.Play();
+            WebCamTexturePlayer(0);
             cameraDisplay.gameObject.SetActive(true);
         }
         else
@@ -36,9 +36,25 @@ public class CameraController : MonoBehaviour
         }
         if (!webcamTexture.isPlaying)
         {
-            webcamTexture.Play();
+            WebCamTexturePlayer(0);
             cameraDisplay.gameObject.SetActive(true);
         }
+    }
+    public void WebCamTexturePlayer(int value)
+    {
+        if (value == 0)
+        {
+            webcamTexture.Play();
+        }
+        else if (value == 1)
+        {
+            webcamTexture.Pause();
+        }
+        else if (value == 2)
+        {
+            webcamTexture.Stop();
+        }
+
     }
     private void Update()
     {
@@ -57,7 +73,7 @@ public class CameraController : MonoBehaviour
     {
         if (webcamTexture.isPlaying)
         {
-            webcamTexture.Stop();
+            WebCamTexturePlayer(2);
             cameraDisplay.gameObject.SetActive(false);
         }
     }

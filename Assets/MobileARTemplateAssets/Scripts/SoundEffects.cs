@@ -8,9 +8,18 @@ public class SoundEffects : MonoBehaviour
     public AudioSource shieldSound;
     private void Start()
     {
-        shieldSound.loop = true;
-        potionFound.volume = 1.0f;
-        shutterSound.volume = 1.0f;
+        if (shieldSound != null)
+        {
+            shieldSound.loop = true;
+        }
+        if (potionFound != null)
+        {
+            potionFound.volume = 1.0f;
+        }
+        if (shutterSound != null)
+        {
+            shutterSound.volume = 1.0f;
+        }
     }
     public void shieldSoundPlay()
     {

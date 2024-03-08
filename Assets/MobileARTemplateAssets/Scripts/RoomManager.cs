@@ -2,7 +2,7 @@ using Photon.Pun;
 using UnityEngine;
 public class RoomManager : MonoBehaviourPunCallbacks
 {
-    void Start()
+    public void onClickStart()
     {
         Debug.Log("Connecting...");
         PhotonNetwork.ConnectUsingSettings();

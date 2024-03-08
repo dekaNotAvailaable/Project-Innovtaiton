@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -123,51 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &173872031
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 173872032}
-  - component: {fileID: 173872033}
-  m_Layer: 0
-  m_Name: Quick Start Room Controller
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &173872032
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 173872031}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 460.18225, y: 1365.0475, z: 211.74226}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &173872033
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 173872031}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22cc41f7f3fef4540ac0bb48fde89b86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  multiplayerSceneIndex: 1
 --- !u!1 &344174278
 GameObject:
   m_ObjectHideFlags: 0
@@ -992,7 +947,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: FInd an opponent
+  m_text: Find an opponent
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8989a0697ab1c5c45adb24d900512de3, type: 2}
   m_sharedMaterial: {fileID: 572314576500128122, guid: 8989a0697ab1c5c45adb24d900512de3,
@@ -1289,53 +1244,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundEffects: {fileID: 1796534840}
---- !u!1 &1641111812
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1641111814}
-  - component: {fileID: 1641111813}
-  m_Layer: 0
-  m_Name: Lobby Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1641111813
+--- !u!114 &1641111813 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 5206844286707472132, guid: efc4104f30b277549bc33aa1e5c156ff,
+    type: 3}
+  m_PrefabInstance: {fileID: 177138205374410698}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1641111812}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 357887a941adad4408412bbb2364a2d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  quickStartButton: {fileID: 868868441}
-  quickCancelButton: {fileID: 1192582936}
-  roomSize: 4
---- !u!4 &1641111814
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1641111812}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 460.18225, y: 1365.0475, z: 211.74226}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1796534836
 GameObject:
   m_ObjectHideFlags: 0
@@ -1444,7 +1364,6 @@ MonoBehaviour:
   buttonSound: {fileID: 512609013}
   shutterSound: {fileID: 0}
   potionFound: {fileID: 0}
-  shieldSound: {fileID: 0}
 --- !u!1 &1820109295
 GameObject:
   m_ObjectHideFlags: 0
@@ -1807,6 +1726,152 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1001 &177138205374410698
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3058886622171951126, guid: efc4104f30b277549bc33aa1e5c156ff,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 460.18225
+      objectReference: {fileID: 0}
+    - target: {fileID: 3058886622171951126, guid: efc4104f30b277549bc33aa1e5c156ff,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1365.0475
+      objectReference: {fileID: 0}
+    - target: {fileID: 3058886622171951126, guid: efc4104f30b277549bc33aa1e5c156ff,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 211.74226
+      objectReference: {fileID: 0}
+    - target: {fileID: 3058886622171951126, guid: efc4104f30b277549bc33aa1e5c156ff,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3058886622171951126, guid: efc4104f30b277549bc33aa1e5c156ff,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3058886622171951126, guid: efc4104f30b277549bc33aa1e5c156ff,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3058886622171951126, guid: efc4104f30b277549bc33aa1e5c156ff,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3058886622171951126, guid: efc4104f30b277549bc33aa1e5c156ff,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3058886622171951126, guid: efc4104f30b277549bc33aa1e5c156ff,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3058886622171951126, guid: efc4104f30b277549bc33aa1e5c156ff,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5206844286707472132, guid: efc4104f30b277549bc33aa1e5c156ff,
+        type: 3}
+      propertyPath: quickStartButton
+      value: 
+      objectReference: {fileID: 868868441}
+    - target: {fileID: 5206844286707472132, guid: efc4104f30b277549bc33aa1e5c156ff,
+        type: 3}
+      propertyPath: quickCancelButton
+      value: 
+      objectReference: {fileID: 1192582936}
+    - target: {fileID: 7396774030616620154, guid: efc4104f30b277549bc33aa1e5c156ff,
+        type: 3}
+      propertyPath: m_Name
+      value: Lobby Manager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: efc4104f30b277549bc33aa1e5c156ff, type: 3}
+--- !u!1001 &2121768989459683935
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4595900526612378472, guid: 7069c9890fcbfe9459ec604303db03a1,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 460.18225
+      objectReference: {fileID: 0}
+    - target: {fileID: 4595900526612378472, guid: 7069c9890fcbfe9459ec604303db03a1,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1365.0475
+      objectReference: {fileID: 0}
+    - target: {fileID: 4595900526612378472, guid: 7069c9890fcbfe9459ec604303db03a1,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 211.74226
+      objectReference: {fileID: 0}
+    - target: {fileID: 4595900526612378472, guid: 7069c9890fcbfe9459ec604303db03a1,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4595900526612378472, guid: 7069c9890fcbfe9459ec604303db03a1,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4595900526612378472, guid: 7069c9890fcbfe9459ec604303db03a1,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4595900526612378472, guid: 7069c9890fcbfe9459ec604303db03a1,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4595900526612378472, guid: 7069c9890fcbfe9459ec604303db03a1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4595900526612378472, guid: 7069c9890fcbfe9459ec604303db03a1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4595900526612378472, guid: 7069c9890fcbfe9459ec604303db03a1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6619199831316751333, guid: 7069c9890fcbfe9459ec604303db03a1,
+        type: 3}
+      propertyPath: m_Name
+      value: Quick Start Room Controller
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7069c9890fcbfe9459ec604303db03a1, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1815,5 +1880,5 @@ SceneRoots:
   - {fileID: 2066356292}
   - {fileID: 1193188627}
   - {fileID: 1638624989}
-  - {fileID: 1641111814}
-  - {fileID: 173872032}
+  - {fileID: 177138205374410698}
+  - {fileID: 2121768989459683935}

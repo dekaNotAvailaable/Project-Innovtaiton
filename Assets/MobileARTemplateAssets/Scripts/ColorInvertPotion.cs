@@ -30,8 +30,8 @@ public class ColorInvertPotion : MonoBehaviour
         colorDetect.pixelColor = initialColor;
         isRevert = false;
     }
-    //public void bool
-    //{ 
-    //   return
-    //}
+    public bool IsRevert()
+    {
+        return isRevert;
+    }
 }

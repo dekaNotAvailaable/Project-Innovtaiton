@@ -5,9 +5,18 @@ public class LevelChange : MonoBehaviour
 {
     public SoundEffects soundEffects;
     private string nextScene;
+    private CameraController camControl;
+    private void Start()
+    {
+        camControl = FindAnyObjectByType<CameraController>();
+    }
     public void NextScene(string scene)
     {
         nextScene = scene;
+        if (camControl != null)
+        {
+            camControl.ToggleCamera();
+        }
         if (soundEffects != null)
         {
             soundEffects.ButtonSoundPlay();
@@ -17,6 +26,7 @@ public class LevelChange : MonoBehaviour
         {
             SceneManager.LoadSceneAsync(scene);
         }
+
 
         // else { SceneManager.LoadSceneAsync(scene); }
     }

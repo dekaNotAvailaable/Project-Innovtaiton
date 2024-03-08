@@ -32,11 +32,14 @@ public class PoitionColor : MonoBehaviour
         {
             if (potion != null)
             {
-                // Get a random color from the predefined set of RGB colors
-                Color randomColor = potionColors[Random.Range(0, potionColors.Length)];
-                randomColor.a = 1;
-                potion.color = randomColor;
-                Debug.Log("Potion " + potion + " color changed to: " + randomColor);
+                if (potionColors.Length > 0)
+                {
+                    // Get a random color from the predefined set of RGB colors
+                    Color randomColor = potionColors[Random.Range(0, potionColors.Length)];
+                    randomColor.a = 1;
+                    potion.color = randomColor;
+                    Debug.Log("Potion " + potion + " color changed to: " + randomColor);
+                }
             }
             else
             {

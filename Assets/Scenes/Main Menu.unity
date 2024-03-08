@@ -1261,6 +1261,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonSound: {fileID: 2096384604}
+  shutterSound: {fileID: 0}
+  potionFound: {fileID: 0}
+  shieldSound: {fileID: 0}
 --- !u!1 &879588318
 GameObject:
   m_ObjectHideFlags: 0

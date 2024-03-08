@@ -123,6 +123,51 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &173872031
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 173872032}
+  - component: {fileID: 173872033}
+  m_Layer: 0
+  m_Name: Quick Start Room Controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &173872032
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173872031}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 460.18225, y: 1365.0475, z: 211.74226}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &173872033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173872031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22cc41f7f3fef4540ac0bb48fde89b86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  multiplayerSceneIndex: 1
 --- !u!1 &344174278
 GameObject:
   m_ObjectHideFlags: 0
@@ -1255,7 +1300,7 @@ GameObject:
   - component: {fileID: 1641111814}
   - component: {fileID: 1641111813}
   m_Layer: 0
-  m_Name: Room Manager
+  m_Name: Lobby Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1275,7 +1320,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   quickStartButton: {fileID: 868868441}
   quickCancelButton: {fileID: 1192582936}
-  roomSize: 2
+  roomSize: 4
 --- !u!4 &1641111814
 Transform:
   m_ObjectHideFlags: 0
@@ -1771,3 +1816,4 @@ SceneRoots:
   - {fileID: 1193188627}
   - {fileID: 1638624989}
   - {fileID: 1641111814}
+  - {fileID: 173872032}

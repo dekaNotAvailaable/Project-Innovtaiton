@@ -8,9 +8,11 @@ public class ColorDetection : MonoBehaviour
     public Color pixelColor;
     public Image myScanedColor;
     public bool inversionActive = false;
+    private ColorInvertPotion invert;
     public Vector2 PixelPosition { get; private set; }
     private void Start()
     {
+        invert = FindAnyObjectByType<ColorInvertPotion>();
         myScanedColor.color = new Vector4(255, 255, 255, 0);
         myScanedColor.gameObject.SetActive(false);
     }

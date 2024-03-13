@@ -7,11 +7,9 @@ public class FreezePotion : MonoBehaviour
     public Image freezeImage;
     public float freezeDuration = 5f;
     Color transparent;
-    private ImmunityPotion immune;
     private CameraController camControl;
     private void Start()
     {
-        immune = FindAnyObjectByType<ImmunityPotion>();
         camControl = FindAnyObjectByType<CameraController>();
         transparent = freezeImage.color;
         transparent.a = 0f;
@@ -45,11 +43,8 @@ public class FreezePotion : MonoBehaviour
     }
     public void ApplyFreezePotion()
     {
-        if (!immune.IsImmunityActive())
-        {
-            freezeImage.enabled = true;
-            camControl.WebCamTexturePlayer(1);
-            StartCoroutine(IncreaseAlphaOverTime());
-        }
+        freezeImage.enabled = true;
+        camControl.WebCamTexturePlayer(1);
+        StartCoroutine(IncreaseAlphaOverTime());
     }
 }

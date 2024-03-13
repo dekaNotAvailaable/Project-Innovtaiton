@@ -5,25 +5,16 @@ public class SoundEffects : MonoBehaviour
     public AudioSource buttonSound;
     public AudioSource shutterSound;
     public AudioSource potionFound;
-    public AudioSource shieldSoundPart1;
-    public AudioSource shieldSoundPart2;
+    //public AudioSource shieldSound;
     private void Start()
     {
-        shieldSoundPart1.loop = true;
+        //shieldSound.loop = true;
         potionFound.volume = 1.0f;
         shutterSound.volume = 1.0f;
     }
-    public void shieldSoundPlay(bool value)
+    public void shieldSoundPlay()
     {
-        if (value)
-        {
-            shieldSoundPart1.Play();
-        }
-        else
-        {
-            shieldSoundPart1.Stop();
-            shieldSoundPart2.Play();
-        }
+        //shieldSound.Play();
     }
     public void FoundPotionSound()
     {

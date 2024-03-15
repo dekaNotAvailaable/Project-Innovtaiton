@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using Photon.Pun;
+using UnityEngine;
 
 public class QuickStartRoomController : MonoBehaviourPunCallbacks
 {
@@ -25,7 +23,7 @@ public class QuickStartRoomController : MonoBehaviourPunCallbacks
     }
     private void StartGame()
     {
-        if(PhotonNetwork.IsMasterClient)
+        if (PhotonNetwork.IsMasterClient)
         {
             Debug.Log("Starting Game");
             PhotonNetwork.LoadLevel(multiplayerSceneIndex);

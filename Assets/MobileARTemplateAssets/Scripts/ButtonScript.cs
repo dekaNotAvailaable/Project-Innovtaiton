@@ -5,7 +5,6 @@ using UnityEngine;
 public class ButtonScript : MonoBehaviour
 {
     public TextMeshProUGUI findingText;
-    public TextMeshProUGUI findOpponentText;
     public float animationSpeed = 0.5f; // Adjust this value to change the speed of the animation
 
     private bool isAnimating = false;
@@ -13,6 +12,7 @@ public class ButtonScript : MonoBehaviour
     private void Start()
     {
         findingText.enabled = false;
+        ButtonAnimation();
     }
 
     private IEnumerator AnimateText()
@@ -34,9 +34,7 @@ public class ButtonScript : MonoBehaviour
 
     public void ButtonAnimation()
     {
-        findOpponentText.enabled = false;
         findingText.enabled = true;
-
         if (!isAnimating)
         {
             StartCoroutine(AnimateText());

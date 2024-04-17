@@ -35,7 +35,7 @@ public class ColorCheck : MonoBehaviour
                 debugText.gameObject.SetActive(true);
                 debugText.color = Color.green;
                 debugText.text = $"Detected color matches Potion {i + 1} color!";
-                poitionColor.DestroyPotions(i);
+                poitionColor.DestroyPotion(i);
                 return;
             }
         }

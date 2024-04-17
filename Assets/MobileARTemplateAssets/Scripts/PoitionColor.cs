@@ -1,61 +1,82 @@
+using Photon.Pun;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PoitionColor : MonoBehaviour
+public class PoitionColor : MonoBehaviourPunCallbacks, IPunObservable
 {
     public Image[] Potions;
-    private int activePotionCount; // Counter for active potions
     public Color[] potionColors;
-    private SoundEffects effects;
-    private bool isRunOnStart;
 
     void Start()
     {
-        isRunOnStart = true;
-        effects = FindAnyObjectByType<SoundEffects>();
-        ReassignPotionColors();
-        activePotionCount = Potions.Length; // Set initial active potion count
+        if (photonView.IsMine)
+        {
+            // If this is the local player, assign random potion colors
+            AssignRandomPotionColors();
+            Debug.Log("Check if the view is mine (should only appear in master client)");
+            SendPotionColors();
+        }
     }
 
-    public void ReassignPotionColors()
+    public void AssignRandomPotionColors()
     {
-        if (isRunOnStart)
-        {
-            isRunOnStart = false;
-        }
-        else
-        {
-            effects.ButtonSoundPlay();
-        }
-
         foreach (Image potion in Potions)
         {
-            if (potion != null)
+            if (potion != null && potionColors.Length > 0)
             {
-                if (potionColors.Length > 0)
-                {
-                    // Get a random color from the predefined set of RGB colors
-                    Color randomColor = potionColors[Random.Range(0, potionColors.Length)];
-                    randomColor.a = 1;
-                    potion.color = randomColor;
-                    Debug.Log("Potion " + potion + " color changed to: " + randomColor);
-                }
+                Color randomColor = potionColors[Random.Range(0, potionColors.Length)];
+
+                // Assign random Color directly to potion image
+                randomColor.a = 1;
+                potion.color = randomColor;
             }
             else
             {
-                Debug.LogWarning("Image component not found on a potion GameObject.");
+                Debug.LogWarning("Image component not found on a potion GameObject or no colors available.");
             }
         }
     }
 
-    public void DestroyPotions(int i)
+    [PunRPC]
+    void SendPotionColorsToClients(Vector3[] colors)
     {
-        if (Potions != null && i >= 0 && i < Potions.Length)
+        // Update potion colors with the received data
+        for (int i = 0; i < Potions.Length && i < colors.Length; i++)
         {
-            Destroy(Potions[i].gameObject);
-            activePotionCount--; // Decrement active potion count
-            Debug.Log("Potion " + i + " destroyed. Active potions remaining: " + activePotionCount);
-            effects.FoundPotionSound();
+            Color color = new Color(colors[i].x, colors[i].y, colors[i].z);
+            Potions[i].color = color;
+        }
+    }
+
+    void SendPotionColors()
+    {
+        // Convert Color array to Vector3 array before sending
+        Vector3[] colors = new Vector3[potionColors.Length];
+        for (int i = 0; i < potionColors.Length; i++)
+        {
+            colors[i] = new Vector3(potionColors[i].r, potionColors[i].g, potionColors[i].b);
+        }
+
+        photonView.RPC("SendPotionColorsToClients", RpcTarget.OthersBuffered, colors);
+    }
+
+    // Other clients receive potion colors from the master client
+    [PunRPC]
+    void ReceivePotionColorsFromMaster(Vector3[] colors)
+    {
+        // Update potion colors with the received data
+        for (int i = 0; i < Potions.Length && i < colors.Length; i++)
+        {
+            Color color = new Color(colors[i].x, colors[i].y, colors[i].z);
+            Potions[i].color = color;
+        }
+    }
+
+    public void DestroyPotion(int potionIndex)
+    {
+        if (Potions != null && potionIndex >= 0 && potionIndex < Potions.Length)
+        {
+            Destroy(Potions[potionIndex].gameObject);
         }
         else
         {
@@ -63,7 +84,6 @@ public class PoitionColor : MonoBehaviour
         }
     }
 
-    // Method to get the color of a specific potion
     public Color GetPotionColor(int potionIndex)
     {
         if (potionIndex >= 0 && potionIndex < Potions.Length)
@@ -77,9 +97,21 @@ public class PoitionColor : MonoBehaviour
         }
     }
 
-    // Method to get the number of active potions
     public int GetActivePotionCount()
     {
-        return activePotionCount;
+        int count = 0;
+        foreach (Image potion in Potions)
+        {
+            if (potion != null)
+            {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        // Implement serialization logic here if needed
     }
 }

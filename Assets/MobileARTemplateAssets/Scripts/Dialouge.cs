@@ -1,7 +1,6 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Dialogue : MonoBehaviour
 {
@@ -20,7 +19,10 @@ public class Dialogue : MonoBehaviour
     }
     public void Button1Clicked()
     {
-        NextLine();
+        if (!isTyping)
+        {
+            NextLine();
+        }
         if (dialogueIndex >= OriginalLines().Length) { StartCoroutine(EndDialouge()); }
     }
     void StartDialogue()
@@ -57,19 +59,16 @@ public class Dialogue : MonoBehaviour
         if (dialogueIndex <= currentLines.Length)
         {
             StartCoroutine(TypeLine());
-
         }
-        // else
-        // {
-        //   gameObject.SetActive(false);
-        //}
     }
     private string[] OriginalLines()
     {
         return new string[]
         {
             "To make a potion you need to find colors that you see here in real life.",
-            "You need to find red, green and blue colors and then take a photo of them.",
+            "For example you need to find red, green and blue colors and then take a photo of them.",
+             "Don't forget to set your username and avatar.",
+             "Enjoy!",
         };
     }
 }

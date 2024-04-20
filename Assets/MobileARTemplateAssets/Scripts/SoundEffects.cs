@@ -2,10 +2,25 @@ using UnityEngine;
 
 public class SoundEffects : MonoBehaviour
 {
+    public static SoundEffects Instance { get; private set; }
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     public AudioSource buttonSound;
     public AudioSource shutterSound;
     public AudioSource potionFound;
     public AudioSource shieldSound;
+    public AudioSource wrongColorBuzz;
     private void Start()
     {
         if (shieldSound != null)
@@ -19,6 +34,13 @@ public class SoundEffects : MonoBehaviour
         if (shutterSound != null)
         {
             shutterSound.volume = 1.0f;
+        }
+    }
+    public void WrongColorBuzz()
+    {
+        if (wrongColorBuzz != null)
+        {
+            wrongColorBuzz.Play();
         }
     }
     public void shieldSoundPlay()

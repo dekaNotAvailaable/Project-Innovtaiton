@@ -17,7 +17,7 @@ public class ColorCheck : MonoBehaviour
         poitionColor = FindObjectOfType<PoitionColor>();
         colorDetection = FindObjectOfType<ColorDetection>();
         debugText.gameObject.SetActive(false);
-        percentageText.gameObject.SetActive(false); // Hide percentage text initially
+        percentageText.gameObject.SetActive(false);
     }
 
     public void CheckColor()
@@ -31,18 +31,14 @@ public class ColorCheck : MonoBehaviour
             Color potionColor = poitionColor.GetPotionColor(i);
             if (ColorApproximatelyEqual(detectedColor, potionColor))
             {
+                SoundEffects.Instance.FoundPotionSound();
                 Debug.Log($"Detected color matches Potion {i + 1} color!");
-                debugText.gameObject.SetActive(true);
-                debugText.color = Color.green;
-                debugText.text = $"Detected color matches Potion {i + 1} color!";
                 poitionColor.DestroyPotion(i);
                 return;
             }
         }
-        debugText.gameObject.SetActive(true);
+        SoundEffects.Instance.WrongColorBuzz();
         Debug.Log("Detected color does not match any potion color.");
-        debugText.color = Color.red;
-        debugText.text = "Detected color does not match any potion color.";
     }
 
     Color GetClosestPotionColor(Color detectedColor)

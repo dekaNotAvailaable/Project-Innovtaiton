@@ -12,7 +12,6 @@ public class ColorDetection : MonoBehaviour
     private void Start()
     {
         myScanedColor.color = new Vector4(255, 255, 255, 0);
-        myScanedColor.gameObject.SetActive(false);
     }
     public void AnalyzePixelColorAtCenter()
     {

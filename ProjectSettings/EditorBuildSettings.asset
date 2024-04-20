@@ -35,10 +35,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: 23876df0b91467742824b91ab2796b02
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Camera for tutorial.unity
     guid: 6fd41fc4601bbd848b9b20dcdd2dd5f7
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Camera for tutorial 1.unity
     guid: be234f9af88d9a24782261a1349c82c7
   - enabled: 0
@@ -50,7 +50,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Settings.unity
     guid: 1d70721fe862cb84e8822db95ac55b18
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Camera for tutorial final.unity
     guid: 7b95a3267c71ad748b444bbaa6a7c4be
   - enabled: 1

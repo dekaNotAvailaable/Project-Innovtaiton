@@ -102,4 +102,3 @@ public class CameraController : MonoBehaviour
         colorDetection.AnalyzePixelColorAtCenter();
     }
 }
-

@@ -159,7 +159,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0.000030517578}
-  m_SizeDelta: {x: 441.9932, y: 527.6772}
+  m_SizeDelta: {x: 443.37, y: 527.6772}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!82 &512609013
 AudioSource:
@@ -697,7 +697,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b89e6bbe255250f499d21b6f401dd102, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundEffects: {fileID: 1796534840}
 --- !u!1 &1796534836
 GameObject:
   m_ObjectHideFlags: 0
@@ -709,7 +708,6 @@ GameObject:
   - component: {fileID: 1796534839}
   - component: {fileID: 1796534838}
   - component: {fileID: 1796534837}
-  - component: {fileID: 1796534840}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -791,22 +789,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1796534840
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1796534836}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77120a36baf36604fbfb33a1e1f6c0f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonSound: {fileID: 512609013}
-  shutterSound: {fileID: 0}
-  potionFound: {fileID: 0}
-  shieldSound: {fileID: 0}
 --- !u!1 &1820109295
 GameObject:
   m_ObjectHideFlags: 0
@@ -899,7 +881,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Level selection
+          m_StringArgument: Main Menu
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1820109298
@@ -998,7 +980,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: finding...
+  m_text: Connecting
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8989a0697ab1c5c45adb24d900512de3, type: 2}
   m_sharedMaterial: {fileID: 572314576500128122, guid: 8989a0697ab1c5c45adb24d900512de3,
@@ -1026,10 +1008,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 75
+  m_fontSize: 72
   m_fontSizeBase: 75
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1

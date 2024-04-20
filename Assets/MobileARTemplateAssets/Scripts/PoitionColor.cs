@@ -9,13 +9,7 @@ public class PoitionColor : MonoBehaviourPunCallbacks, IPunObservable
 
     void Start()
     {
-        if (photonView.IsMine)
-        {
-            // If this is the local player, assign random potion colors
-            AssignRandomPotionColors();
-            Debug.Log("Check if the view is mine (should only appear in master client)");
-            SendPotionColors();
-        }
+        AssignRandomPotionColors();
     }
 
     public void AssignRandomPotionColors()
@@ -25,8 +19,6 @@ public class PoitionColor : MonoBehaviourPunCallbacks, IPunObservable
             if (potion != null && potionColors.Length > 0)
             {
                 Color randomColor = potionColors[Random.Range(0, potionColors.Length)];
-
-                // Assign random Color directly to potion image
                 randomColor.a = 1;
                 potion.color = randomColor;
             }
@@ -36,42 +28,6 @@ public class PoitionColor : MonoBehaviourPunCallbacks, IPunObservable
             }
         }
     }
-
-    [PunRPC]
-    void SendPotionColorsToClients(Vector3[] colors)
-    {
-        // Update potion colors with the received data
-        for (int i = 0; i < Potions.Length && i < colors.Length; i++)
-        {
-            Color color = new Color(colors[i].x, colors[i].y, colors[i].z);
-            Potions[i].color = color;
-        }
-    }
-
-    void SendPotionColors()
-    {
-        // Convert Color array to Vector3 array before sending
-        Vector3[] colors = new Vector3[potionColors.Length];
-        for (int i = 0; i < potionColors.Length; i++)
-        {
-            colors[i] = new Vector3(potionColors[i].r, potionColors[i].g, potionColors[i].b);
-        }
-
-        photonView.RPC("SendPotionColorsToClients", RpcTarget.OthersBuffered, colors);
-    }
-
-    // Other clients receive potion colors from the master client
-    [PunRPC]
-    void ReceivePotionColorsFromMaster(Vector3[] colors)
-    {
-        // Update potion colors with the received data
-        for (int i = 0; i < Potions.Length && i < colors.Length; i++)
-        {
-            Color color = new Color(colors[i].x, colors[i].y, colors[i].z);
-            Potions[i].color = color;
-        }
-    }
-
     public void DestroyPotion(int potionIndex)
     {
         if (Potions != null && potionIndex >= 0 && potionIndex < Potions.Length)
@@ -112,6 +68,10 @@ public class PoitionColor : MonoBehaviourPunCallbacks, IPunObservable
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
-        // Implement serialization logic here if needed
+        stream.SendNext(potionColors.Length);
+        foreach (Color color in potionColors)
+        {
+            stream.SendNext(color);
+        }
     }
 }

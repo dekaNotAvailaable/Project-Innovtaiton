@@ -3,7 +3,6 @@ using UnityEngine.SceneManagement;
 
 public class LevelChange : MonoBehaviour
 {
-    public SoundEffects soundEffects;
     private string nextScene;
     private CameraController camControl;
     private void Start()
@@ -17,10 +16,10 @@ public class LevelChange : MonoBehaviour
         {
             camControl.ToggleCamera();
         }
-        if (soundEffects != null)
+        if (SoundEffects.Instance != null)
         {
-            soundEffects.ButtonSoundPlay();
-            Invoke("LoadSceneDelay", soundEffects.ButtonSoundLength());
+            SoundEffects.Instance.ButtonSoundPlay();
+            Invoke("LoadSceneDelay", SoundEffects.Instance.ButtonSoundLength());
         }
         else
         {

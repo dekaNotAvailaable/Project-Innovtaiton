@@ -88,7 +88,8 @@ public class CameraController : MonoBehaviour
             byte[] bytes = photo.EncodeToPNG();
             System.IO.File.WriteAllBytes(Application.persistentDataPath + "/photo.png", bytes);
             AnalyzeLastPhoto();
-            saturationAdjustment.OrignalStoreColor();
+            saturationAdjustment.OriginalStoreColor();
+            saturationAdjustment.saturationSlider.value = 0.5f;
             colorCheck.CheckColor();
             Debug.LogError("Object color analyzed.");
         }

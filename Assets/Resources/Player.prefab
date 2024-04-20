@@ -1259,9 +1259,10 @@ MonoBehaviour:
   - {fileID: 8728247453023322989}
   - {fileID: 448064859573622496}
   receivedPotionColors:
+  - {r: 1.0922e-40, g: 9.68e-43, b: 0, a: 0}
+  - {r: 0, g: 0, b: 1.09324e-40, a: 5.230715e+22}
   - {r: 0, g: 0, b: 0, a: 0}
-  - {r: 0, g: 0, b: 0, a: 0}
-  - {r: 0, g: 0, b: 0, a: 0}
+  - {r: 1.09189e-40, g: 9.65e-43, b: 0, a: 0}
 --- !u!1 &8218151382916209575
 GameObject:
   m_ObjectHideFlags: 0

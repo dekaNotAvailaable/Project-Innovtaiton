@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-
 public class PoitionColor : MonoBehaviour
 {
     public Image[] Potions;
@@ -9,7 +8,6 @@ public class PoitionColor : MonoBehaviour
     void Start()
     {
         AssignRandomPotionColors();
-        Debug.Log("testtt!:" + Potions.Length);
     }
 
     public void AssignRandomPotionColors()
@@ -49,7 +47,7 @@ public class PoitionColor : MonoBehaviour
         else
         {
             Debug.LogWarning("Invalid potion index provided.");
-            return Color.white; // Return default color
+            return Color.white;
         }
     }
 

@@ -10,6 +10,6 @@ public class Spawner : MonoBehaviour
         int playerIndex = PhotonNetwork.LocalPlayer.ActorNumber % spawnPoints.Length;
         // Instantiate the player prefab at the corresponding spawn point
         PhotonNetwork.Instantiate("Player", spawnPoints[playerIndex].position, Quaternion.identity);
-        Debug.Log(spawnPoints[playerIndex].position);
+        // Debug.Log(spawnPoints[playerIndex].position);
     }
 }

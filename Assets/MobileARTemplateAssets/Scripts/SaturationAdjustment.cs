@@ -6,23 +6,25 @@ public class SaturationAdjustment : MonoBehaviour
     public Slider saturationSlider;
     public ColorDetection colorDetection;
     private Color originalColor;
-    private float originalBrightness;
     private ColorCheck colorCheck;
 
     private void Awake()
     {
-        colorCheck = FindAnyObjectByType<ColorCheck>();
+        colorCheck = FindObjectOfType<ColorCheck>();
     }
+
     private void Start()
     {
         saturationSlider.value = 0.5f;
+        saturationSlider.minValue = 0f;
+        saturationSlider.maxValue = 1f;
         saturationSlider.onValueChanged.AddListener(AdjustSaturation);
         saturationSlider.onValueChanged.AddListener(delegate { colorCheck.CheckColor(); });
     }
-    public void OrignalStoreColor()
+
+    public void OriginalStoreColor()
     {
         originalColor = colorDetection.pixelColor;
-        originalBrightness = originalColor.maxColorComponent;
     }
 
     private void AdjustSaturation(float value)
@@ -34,12 +36,9 @@ public class SaturationAdjustment : MonoBehaviour
 
     private Color AdjustColorSaturation(Color originalColor, float saturationValue)
     {
-        float newSaturation = Mathf.Clamp(saturationValue, 0f, 1f);
-        float grayscale = originalColor.grayscale;
-        Color adjustedColor = Color.Lerp(Color.gray * grayscale, originalColor, newSaturation);
-        float brightnessMultiplier = originalBrightness / adjustedColor.maxColorComponent;
-        adjustedColor *= brightnessMultiplier;
-        adjustedColor.a = originalColor.a;
-        return adjustedColor;
+        float h, s, v;
+        Color.RGBToHSV(originalColor, out h, out s, out v);
+        s = Mathf.Clamp01(saturationValue); // Clamp the new saturation value
+        return Color.HSVToRGB(h, s, v);
     }
 }

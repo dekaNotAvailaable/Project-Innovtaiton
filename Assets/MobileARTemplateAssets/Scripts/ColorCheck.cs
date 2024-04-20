@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,6 +11,8 @@ public class ColorCheck : MonoBehaviour
     ColorDetection colorDetection;
     public TextMeshProUGUI percentageText;
     public float tolerance = 0.2f;
+
+    private HashSet<int> destroyedPotions = new HashSet<int>();
 
     void Start()
     {
@@ -24,19 +27,31 @@ public class ColorCheck : MonoBehaviour
         Color closestPotionColor = GetClosestPotionColor(detectedColor);
         float matchPercentage = CalculateMatchPercentage(detectedColor, closestPotionColor);
         UpdatePercentageText(matchPercentage);
+        bool foundMatchingPotion = false;
+
         for (int i = 0; i < poitionColor.Potions.Length; i++)
         {
+            if (destroyedPotions.Contains(i))
+                continue;
+
+
             Color potionColor = poitionColor.GetPotionColor(i);
             if (ColorApproximatelyEqual(detectedColor, potionColor))
             {
                 SoundEffects.Instance.FoundPotionSound();
                 Debug.Log($"Detected color matches Potion {i + 1} color!");
                 poitionColor.DestroyPotion(i);
-                return;
+                destroyedPotions.Add(i);
+                foundMatchingPotion = true;
+                break;
             }
         }
-        SoundEffects.Instance.WrongColorBuzz();
-        Debug.Log("Detected color does not match any potion color.");
+
+        if (!foundMatchingPotion)
+        {
+            SoundEffects.Instance.WrongColorBuzz();
+            Debug.Log("Detected color does not match any potion color.");
+        }
     }
 
     Color GetClosestPotionColor(Color detectedColor)

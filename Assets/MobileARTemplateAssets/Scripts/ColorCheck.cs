@@ -8,7 +8,6 @@ public class ColorCheck : MonoBehaviour
     public int colorIndex;
     PoitionColor poitionColor;
     ColorDetection colorDetection;
-    public TextMeshProUGUI debugText;
     public TextMeshProUGUI percentageText;
     public float tolerance = 0.2f;
 
@@ -16,7 +15,6 @@ public class ColorCheck : MonoBehaviour
     {
         poitionColor = FindObjectOfType<PoitionColor>();
         colorDetection = FindObjectOfType<ColorDetection>();
-        debugText.gameObject.SetActive(false);
         percentageText.gameObject.SetActive(false);
     }
 
@@ -52,7 +50,6 @@ public class ColorCheck : MonoBehaviour
             {
                 Color potionColor = potion.color;
                 float distance = ColorDistance(detectedColor, potionColor);
-
                 Debug.Log("distance to color to potion:" + distance + "closestDisntace:" + closestDistance);
                 Debug.Log("tolorance:" + tolerance + "distance - tolarace:" + (distance - tolerance));
                 if (distance - tolerance <= closestDistance)
@@ -72,8 +69,7 @@ public class ColorCheck : MonoBehaviour
         float distance = ColorDistance(detectedColor, closestPotionColor);
         float matchPercentage = 1 - Mathf.Clamp01(distance / tolerance);
         Debug.Log("match percentage:" + matchPercentage);
-        return matchPercentage * 100f; // Convert to percentage
-
+        return matchPercentage * 100f;
     }
 
     void UpdatePercentageText(float matchPercentage)
@@ -82,10 +78,8 @@ public class ColorCheck : MonoBehaviour
         {
             percentageText.gameObject.SetActive(true);
             if (matchPercentage < 0) { percentageText.color = Color.white; }
-            // Convert the match percentage to a string with the fractional part included
-            string percentageString = $"{matchPercentage:F2}%"; // Displays up to 2 decimal places
-
-            percentageText.text = percentageString; // Display the percentage in text
+            string percentageString = $"{matchPercentage:F2}%";
+            percentageText.text = percentageString;
         }
     }
 

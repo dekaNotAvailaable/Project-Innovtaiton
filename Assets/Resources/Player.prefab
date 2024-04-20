@@ -379,7 +379,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1, y: 10}
+  m_AnchoredPosition: {x: -1, y: 8.05}
   m_SizeDelta: {x: 15, y: 15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9087868059566914175
@@ -1258,7 +1258,10 @@ MonoBehaviour:
   - {fileID: 2986855175142943173}
   - {fileID: 8728247453023322989}
   - {fileID: 448064859573622496}
-  receivedPotionColors: []
+  receivedPotionColors:
+  - {r: 0, g: 0, b: 0, a: 0}
+  - {r: 0, g: 0, b: 0, a: 0}
+  - {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &8218151382916209575
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,8 +1,7 @@
-using Photon.Pun;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PoitionColor : MonoBehaviourPunCallbacks, IPunObservable
+public class PoitionColor : MonoBehaviour
 {
     public Image[] Potions;
     public Color[] potionColors;
@@ -10,6 +9,7 @@ public class PoitionColor : MonoBehaviourPunCallbacks, IPunObservable
     void Start()
     {
         AssignRandomPotionColors();
+        Debug.Log("testtt!:" + Potions.Length);
     }
 
     public void AssignRandomPotionColors()
@@ -64,14 +64,5 @@ public class PoitionColor : MonoBehaviourPunCallbacks, IPunObservable
             }
         }
         return count;
-    }
-
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    {
-        stream.SendNext(potionColors.Length);
-        foreach (Color color in potionColors)
-        {
-            stream.SendNext(color);
-        }
     }
 }

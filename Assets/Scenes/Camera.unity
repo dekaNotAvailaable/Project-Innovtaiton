@@ -540,7 +540,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorIndex: 0
-  debugText: {fileID: 0}
   percentageText: {fileID: 492303174}
   tolerance: 0.2
 --- !u!1 &330792324
@@ -727,7 +726,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 27.9, y: -210.2}
+  m_AnchoredPosition: {x: 27.9, y: -210.19995}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &492303174
@@ -1838,6 +1837,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 733331812007695470, guid: 12723a7727e849c4a9e247d9a042de36, type: 3}
+    - {fileID: 5071064205727224780, guid: 12723a7727e849c4a9e247d9a042de36, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

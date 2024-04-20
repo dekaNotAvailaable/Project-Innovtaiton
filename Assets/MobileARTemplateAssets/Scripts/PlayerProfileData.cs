@@ -20,7 +20,7 @@ public class PlayerProfileData : MonoBehaviourPunCallbacks, IPunObservable
     }
     void Start()
     {
-        potionColor = FindObjectOfType<PoitionColor>();
+        potionColor = FindAnyObjectByType<PoitionColor>();
         canvasName.SetActive(true);
         nameText.text = photonView.Controller.NickName;
         ShowCharacterMultiplayer();
@@ -61,16 +61,19 @@ public class PlayerProfileData : MonoBehaviourPunCallbacks, IPunObservable
     }
     private void ReadPotionColors(PhotonStream stream)
     {
-        for (int i = 0; i < potionColor.Potions.Length; i++)
+        if (potionColor != null && potionColor.Potions != null)
         {
-            float r = (float)stream.ReceiveNext();
-            float g = (float)stream.ReceiveNext();
-            float b = (float)stream.ReceiveNext();
-            float a = (float)stream.ReceiveNext();
-            Color potionColor = new Color(r, g, b, a);
-            if (i < Potions.Length)
+            for (int i = 0; i < potionColor.Potions.Length; i++)
             {
-                Potions[i].color = potionColor;
+                float r = (float)stream.ReceiveNext();
+                float g = (float)stream.ReceiveNext();
+                float b = (float)stream.ReceiveNext();
+                float a = (float)stream.ReceiveNext();
+                Color potionColor = new Color(r, g, b, a);
+                if (i < Potions.Length)
+                {
+                    Potions[i].color = potionColor;
+                }
             }
         }
     }

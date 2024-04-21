@@ -23,9 +23,9 @@ public class CameraController : MonoBehaviour
         {
             webcamTexture = new WebCamTexture(Screen.width, Screen.height);
             cameraDisplay.texture = webcamTexture;
-            Debug.LogError("camera found on this device.");
+            // Debug.LogError("camera found on this device.");
             cameraActive = true;
-            Debug.LogError(" camera start.");
+            // Debug.LogError(" camera start.");
             WebCamTexturePlayer(0);
             cameraDisplay.gameObject.SetActive(true);
         }

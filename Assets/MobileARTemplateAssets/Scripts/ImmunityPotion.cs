@@ -31,7 +31,7 @@ public class ImmunityPotion : MonoBehaviour
     public void ApplyImmunity()
     {
         ImmunityPotionInt--;
-        SoundEffects.Instance.shieldSoundPlay();
+        SoundEffects.Instance.ShieldSoundPlay();
         immunityActive = true;
         immuntyImage.gameObject.SetActive(true);
         Debug.Log("Immunity potion applied.");

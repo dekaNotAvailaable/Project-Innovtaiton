@@ -40,7 +40,7 @@ public class PlayerMutiplayerHandle : MonoBehaviourPunCallbacks, IPunObservable
             if (i < Potions.Length)
             {
                 Potions[i].color = receivedPotionColors[i];
-                Debug.Log("Local colors:" + receivedPotionColors[i]);
+                // Debug.Log("Local colors:" + receivedPotionColors[i]);
             }
         }
         isStartLoopFinished = true;
@@ -63,12 +63,12 @@ public class PlayerMutiplayerHandle : MonoBehaviourPunCallbacks, IPunObservable
             if (isStartLoopFinished)
             {
                 ReadPotionColors(stream);
-                Debug.Log("Start loop is finishewd reading colors ");
+                //  Debug.Log("Start loop is finishewd reading colors ");
             }
             else
             {
                 StartCoroutine(ApplyPotionAfterJoined(stream));
-                Debug.Log("start loop isnt finished so running coroutine insted");
+                // Debug.Log("start loop isnt finished so running coroutine insted");
             }
         }
     }
@@ -99,7 +99,6 @@ public class PlayerMutiplayerHandle : MonoBehaviourPunCallbacks, IPunObservable
             receivedPotionColors[i].r = (float)stream.ReceiveNext();
             receivedPotionColors[i].g = (float)stream.ReceiveNext();
             receivedPotionColors[i].b = (float)stream.ReceiveNext();
-            Debug.Log("recieved new colors:" + receivedPotionColors[i]);
             if (i < Potions.Length)
             {
                 Potions[i].color = receivedPotionColors[i];
@@ -118,11 +117,12 @@ public class PlayerMutiplayerHandle : MonoBehaviourPunCallbacks, IPunObservable
 
     public void ActivateFreezePotionOnOtherClients()
     {
-        if (PhotonNetwork.IsConnected && photonView.IsMine)
+        if (PhotonNetwork.IsConnected)
         {
             photonView.RPC("ActivateFreezePotionRPC", RpcTarget.Others);
         }
     }
+
     [PunRPC]
     private void ActivateFreezePotionRPC()
     {

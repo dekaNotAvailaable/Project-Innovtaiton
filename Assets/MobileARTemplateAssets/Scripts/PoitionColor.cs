@@ -1,7 +1,8 @@
+using Photon.Pun;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class PoitionColor : MonoBehaviour
+public class PoitionColor : MonoBehaviourPunCallbacks
 {
     public Image[] Potions;
     public Color[] potionColors;
@@ -13,6 +14,7 @@ public class PoitionColor : MonoBehaviour
         freezePotion = FindAnyObjectByType<FreezePotion>();
         immunityPotion = FindAnyObjectByType<ImmunityPotion>();
         AssignRandomPotionColors();
+
     }
 
     public void AssignRandomPotionColors()
@@ -54,10 +56,6 @@ public class PoitionColor : MonoBehaviour
         {
             Debug.LogWarning("Invalid potion index provided.");
         }
-    }
-    private void Update()
-    {
-        Debug.Log("freeze potion:" + freezePotion.FreezePotionInt + "immunity potion:" + immunityPotion.ImmunityPotionInt);
     }
     private void GetFreezePotion()
     {

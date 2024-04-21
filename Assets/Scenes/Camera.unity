@@ -157,7 +157,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 78.3, y: -49.43}
+  m_AnchoredPosition: {x: 78.29999, y: -49.43}
   m_SizeDelta: {x: 746, y: 476.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &40521907
@@ -1056,7 +1056,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   freezeImage: {fileID: 368604767}
-  freezeDuration: 30
+  freezeDuration: 20
   freezeButton: {fileID: 1969691730}
 --- !u!114 &561791878
 MonoBehaviour:

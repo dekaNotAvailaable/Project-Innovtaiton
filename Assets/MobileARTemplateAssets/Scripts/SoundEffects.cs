@@ -21,12 +21,9 @@ public class SoundEffects : MonoBehaviour
     public AudioSource potionFound;
     public AudioSource shieldSound;
     public AudioSource wrongColorBuzz;
+    public AudioSource freezePotion;
     private void Start()
     {
-        if (shieldSound != null)
-        {
-            shieldSound.loop = true;
-        }
         if (potionFound != null)
         {
             potionFound.volume = 1.0f;
@@ -43,7 +40,14 @@ public class SoundEffects : MonoBehaviour
             wrongColorBuzz.Play();
         }
     }
-    public void shieldSoundPlay()
+    public void FreezePotionPlay()
+    {
+        if (freezePotion != null)
+        {
+            freezePotion.Play();
+        }
+    }
+    public void ShieldSoundPlay()
     {
         if (shieldSound != null)
         {

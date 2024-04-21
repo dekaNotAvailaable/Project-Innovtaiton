@@ -1,12 +1,17 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 public class PoitionColor : MonoBehaviour
 {
     public Image[] Potions;
     public Color[] potionColors;
-
+    private HashSet<int> destroyedPotions = new HashSet<int>();
+    private FreezePotion freezePotion;
+    private ImmunityPotion immunityPotion;
     void Start()
     {
+        freezePotion = FindAnyObjectByType<FreezePotion>();
+        immunityPotion = FindAnyObjectByType<ImmunityPotion>();
         AssignRandomPotionColors();
     }
 
@@ -26,18 +31,42 @@ public class PoitionColor : MonoBehaviour
             }
         }
     }
+    public bool IsPotionDestroyed(int potionIndex)
+    {
+        return destroyedPotions.Contains(potionIndex);
+    }
     public void DestroyPotion(int potionIndex)
     {
         if (Potions != null && potionIndex >= 0 && potionIndex < Potions.Length)
         {
             Destroy(Potions[potionIndex].gameObject);
+            destroyedPotions.Add(potionIndex);
+            if (Random.value < 0.5f)
+            {
+                GetFreezePotion();
+            }
+            else
+            {
+                GetImmuntyPotion();
+            }
         }
         else
         {
             Debug.LogWarning("Invalid potion index provided.");
         }
     }
-
+    private void Update()
+    {
+        Debug.Log("freeze potion:" + freezePotion.FreezePotionInt + "immunity potion:" + immunityPotion.ImmunityPotionInt);
+    }
+    private void GetFreezePotion()
+    {
+        freezePotion.FreezePotionInt++;
+    }
+    private void GetImmuntyPotion()
+    {
+        immunityPotion.ImmunityPotionInt++;
+    }
     public Color GetPotionColor(int potionIndex)
     {
         if (potionIndex >= 0 && potionIndex < Potions.Length)

@@ -5,10 +5,11 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerProfileData : MonoBehaviourPunCallbacks, IPunObservable
+public class PlayerMutiplayerHandle : MonoBehaviourPunCallbacks, IPunObservable
 {
     public GameObject canvasName;
     public TMP_Text nameText;
+    public TMP_Text potionCount;
     public Image imageDisplayGameObject;
     public Sprite[] imageToActive;
     public Image[] Potions;
@@ -16,16 +17,19 @@ public class PlayerProfileData : MonoBehaviourPunCallbacks, IPunObservable
     private PoitionColor potionColor;
     private int multiplayerAvatarInt;
     private bool isStartLoopFinished = false;
+    private int remainingPotionCount;
     private void Awake()
     {
         potionColor = FindAnyObjectByType<PoitionColor>();
         multiplayerAvatarInt = PlayerPrefs.GetInt("CharacterInt");
+        remainingPotionCount = potionColor.GetActivePotionCount();
     }
     void Start()
     {
         StartCoroutine(StartLoop());
         canvasName.SetActive(true);
         nameText.text = photonView.Controller.NickName;
+        potionCount.text = remainingPotionCount.ToString();
         ShowCharacterMultiplayer();
     }
     IEnumerator StartLoop()
@@ -48,13 +52,14 @@ public class PlayerProfileData : MonoBehaviourPunCallbacks, IPunObservable
         if (stream.IsWriting)
         {
             stream.SendNext(multiplayerAvatarInt);
+            SendPotionIndex(stream);
             SendPotionColors(stream);
         }
         else if (stream.IsReading)
         {
             multiplayerAvatarInt = (int)stream.ReceiveNext();
             ShowCharacterMultiplayer();
-
+            ReadPotionIndex(stream);
             if (isStartLoopFinished)
             {
                 ReadPotionColors(stream);
@@ -67,6 +72,16 @@ public class PlayerProfileData : MonoBehaviourPunCallbacks, IPunObservable
             }
         }
     }
+    private void ReadPotionIndex(PhotonStream stream)
+    {
+        remainingPotionCount = (int)stream.ReceiveNext();
+        potionCount.text = remainingPotionCount.ToString();
+    }
+    private void SendPotionIndex(PhotonStream stream)
+    {
+        stream.SendNext(potionColor.GetActivePotionCount());
+
+    }
     private void SendPotionColors(PhotonStream stream)
     {
         for (int i = 0; i < Potions.Length; i++)
@@ -75,7 +90,6 @@ public class PlayerProfileData : MonoBehaviourPunCallbacks, IPunObservable
             stream.SendNext(receivedPotionColors[i].r);
             stream.SendNext(receivedPotionColors[i].g);
             stream.SendNext(receivedPotionColors[i].b);
-            stream.SendNext(receivedPotionColors[i].a);
         }
     }
     private void ReadPotionColors(PhotonStream stream)
@@ -85,7 +99,6 @@ public class PlayerProfileData : MonoBehaviourPunCallbacks, IPunObservable
             receivedPotionColors[i].r = (float)stream.ReceiveNext();
             receivedPotionColors[i].g = (float)stream.ReceiveNext();
             receivedPotionColors[i].b = (float)stream.ReceiveNext();
-            receivedPotionColors[i].a = (float)stream.ReceiveNext();
             Debug.Log("recieved new colors:" + receivedPotionColors[i]);
             if (i < Potions.Length)
             {
@@ -101,6 +114,19 @@ public class PlayerProfileData : MonoBehaviourPunCallbacks, IPunObservable
     private void ShowCharacterMultiplayer()
     {
         imageDisplayGameObject.sprite = imageToActive[multiplayerAvatarInt];
+    }
+
+    public void ActivateFreezePotionOnOtherClients()
+    {
+        if (PhotonNetwork.IsConnected && photonView.IsMine)
+        {
+            photonView.RPC("ActivateFreezePotionRPC", RpcTarget.Others);
+        }
+    }
+    [PunRPC]
+    private void ActivateFreezePotionRPC()
+    {
+        FindObjectOfType<FreezePotion>().ApplyFreezePotion();
     }
 }
 #pragma warning restore CS0220

@@ -22,19 +22,6 @@ public class CreateAndJoinRoom : MonoBehaviourPunCallbacks
             PhotonNetwork.ConnectUsingSettings();
         }
     }
-    public void Disconnect()
-    {
-        SoundEffects.Instance.ButtonSoundPlay();
-        if (PhotonNetwork.InRoom)
-        {
-            PhotonNetwork.LeaveRoom();
-        }
-        else if (PhotonNetwork.InLobby)
-        {
-            PhotonNetwork.LeaveLobby();
-        }
-        PhotonNetwork.Disconnect();
-    }
     public void CreateRoom()
     {
         SoundEffects.Instance.ButtonSoundPlay();
@@ -68,6 +55,7 @@ public class CreateAndJoinRoom : MonoBehaviourPunCallbacks
         else
         {
             PhotonNetwork.JoinRoom(joinInput.text);
+            Debug.Log("joining room " + joinInput.text);
         }
     }
 

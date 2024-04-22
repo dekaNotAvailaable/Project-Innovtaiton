@@ -1,6 +1,7 @@
 using ExitGames.Client.Photon;
 using Photon.Pun;
 using Photon.Realtime;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -60,7 +61,13 @@ public class CreateAndJoinRoom : MonoBehaviourPunCallbacks
             Debug.Log("joining room " + joinInput.text);
         }
     }
-
+    public override void OnRoomListUpdate(List<RoomInfo> roomList)
+    {
+        for (int i = 0; i < roomList.Count; i++)
+        {
+            print(roomList[i].Name);
+        }
+    }
     public override void OnConnectedToMaster()
     {
         Debug.Log("Connected to Photon Master Server.");

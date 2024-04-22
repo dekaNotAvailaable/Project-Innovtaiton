@@ -46,7 +46,14 @@ public class PlayerMutiplayerHandle : MonoBehaviourPunCallbacks, IPunObservable
         isStartLoopFinished = true;
         yield return null;
     }
-
+    public void UpdatePotionCountLocally()
+    {
+        if (photonView.IsMine)
+        {
+            remainingPotionCount = potionColor.GetActivePotionCount();
+            potionCount.text = remainingPotionCount.ToString();
+        }
+    }
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.IsWriting)
@@ -75,11 +82,13 @@ public class PlayerMutiplayerHandle : MonoBehaviourPunCallbacks, IPunObservable
     private void ReadPotionIndex(PhotonStream stream)
     {
         remainingPotionCount = (int)stream.ReceiveNext();
+
         potionCount.text = remainingPotionCount.ToString();
     }
     private void SendPotionIndex(PhotonStream stream)
     {
         stream.SendNext(potionColor.GetActivePotionCount());
+        potionCount.text = potionColor.GetActivePotionCount().ToString();
 
     }
     private void SendPotionColors(PhotonStream stream)

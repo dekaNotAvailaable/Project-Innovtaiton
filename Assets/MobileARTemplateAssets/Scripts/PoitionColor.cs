@@ -9,6 +9,7 @@ public class PoitionColor : MonoBehaviourPunCallbacks
     private HashSet<int> destroyedPotions = new HashSet<int>();
     private FreezePotion freezePotion;
     private ImmunityPotion immunityPotion;
+    private PlayerMutiplayerHandle MutiplayerHandle;
     void Start()
     {
         freezePotion = FindAnyObjectByType<FreezePotion>();
@@ -43,6 +44,11 @@ public class PoitionColor : MonoBehaviourPunCallbacks
         {
             Destroy(Potions[potionIndex].gameObject);
             destroyedPotions.Add(potionIndex);
+            if (MutiplayerHandle != null)
+            {
+                MutiplayerHandle = FindAnyObjectByType<PlayerMutiplayerHandle>();
+                MutiplayerHandle.UpdatePotionCountLocally();
+            }
             if (Random.value < 0.5f)
             {
                 GetFreezePotion();
@@ -88,6 +94,8 @@ public class PoitionColor : MonoBehaviourPunCallbacks
                 count++;
             }
         }
+
         return count;
+
     }
 }

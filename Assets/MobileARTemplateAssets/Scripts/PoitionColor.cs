@@ -10,6 +10,7 @@ public class PoitionColor : MonoBehaviourPunCallbacks
     private FreezePotion freezePotion;
     private ImmunityPotion immunityPotion;
     private LevelChange lvlChange;
+    private PlayerMutiplayerHandle MutiplayerHandle;
     void Start()
     {
         freezePotion = FindAnyObjectByType<FreezePotion>();
@@ -49,26 +50,27 @@ public class PoitionColor : MonoBehaviourPunCallbacks
         {
             Destroy(Potions[potionIndex].gameObject);
             destroyedPotions.Add(potionIndex);
-            if (destroyedPotions.Count <= 0) 
+            if (destroyedPotions.Count <= 0)
             {
                 GameFinish();
-            if (MutiplayerHandle != null)
-            {
-                MutiplayerHandle = FindAnyObjectByType<PlayerMutiplayerHandle>();
-                MutiplayerHandle.UpdatePotionCountLocally();
-            }
-            if (Random.value < 0.5f)
-            {
-                GetFreezePotion();
+                if (MutiplayerHandle != null)
+                {
+                    MutiplayerHandle = FindAnyObjectByType<PlayerMutiplayerHandle>();
+                    MutiplayerHandle.UpdatePotionCountLocally();
+                }
+                if (Random.value < 0.5f)
+                {
+                    GetFreezePotion();
+                }
+                else
+                {
+                    GetImmuntyPotion();
+                }
             }
             else
             {
-                GetImmuntyPotion();
+                Debug.LogWarning("Invalid potion index provided.");
             }
-        }
-        else
-        {
-            Debug.LogWarning("Invalid potion index provided.");
         }
     }
     private void GetFreezePotion()

@@ -21,6 +21,7 @@ public class CreateAndJoinRoom : MonoBehaviourPunCallbacks
         {
             PhotonNetwork.ConnectUsingSettings();
         }
+        else { Debug.Log("photon is connected"); }
     }
     public void CreateRoom()
     {
@@ -37,6 +38,7 @@ public class CreateAndJoinRoom : MonoBehaviourPunCallbacks
         else
         {
             PhotonNetwork.CreateRoom(createInput.text);
+            Debug.Log("created a room:" + createInput.text);
         }
     }
 

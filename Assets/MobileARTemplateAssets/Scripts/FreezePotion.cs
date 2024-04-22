@@ -14,9 +14,14 @@ public class FreezePotion : MonoBehaviour
             {
                 freezeButton.gameObject.SetActive(true);
             }
-            else if (_freezePotion <= 0) { freezeButton.gameObject.SetActive(false); }
+            else if (_freezePotion <= 0)
+            {
+                Debug.Log("freeze button set to false");
+                freezeButton.gameObject.SetActive(false);
+            }
         }
     }
+
     public Image freezeImage;
     public float freezeDuration = 5f;
     public Button freezeButton;
@@ -32,6 +37,10 @@ public class FreezePotion : MonoBehaviour
         transparent.a = 0f;
         freezeImage.gameObject.SetActive(false);
         freezeImage.color = transparent;
+    }
+    private void Update()
+    {
+        Debug.LogWarning(_freezePotion);
     }
     private IEnumerator RemoveEffectAfterTime()
     {
@@ -60,21 +69,26 @@ public class FreezePotion : MonoBehaviour
     }
     public void SendSignalOnButtonClick()
     {
+        FreezePotionInt -= 1;
+        Debug.Log("freeze Button Getting Pressed");
         MutiplayerHandle = FindAnyObjectByType<PlayerMutiplayerHandle>();
         if (MutiplayerHandle != null)
         {
+            Debug.Log("Found multiplayer Script");
             MutiplayerHandle.ActivateFreezePotionOnOtherClients();
         }
-        else { Debug.Log("player profile info is null"); }
+        else { Debug.LogWarning("player profile info is null"); }
     }
     public void ApplyFreezePotion()
     {
+
         if (!shield.IsImmunityActive())
         {
-            FreezePotionInt--;
+            SoundEffects.Instance.FreezePotionPlay();
             freezeImage.gameObject.SetActive(true);
             camControl.WebCamTexturePlayer(1);
             StartCoroutine(IncreaseAlphaOverTime());
+            Debug.Log("applying freeze potion");
         }
     }
 }

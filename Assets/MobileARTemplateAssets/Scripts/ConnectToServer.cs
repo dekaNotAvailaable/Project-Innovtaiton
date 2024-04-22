@@ -16,18 +16,5 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
     {
         SceneManager.LoadScene("Lobby");
     }
-    public void DisconnectFromPhoton()
-    {
-        if (PhotonNetwork.InRoom)
-        {
 
-            PhotonNetwork.LeaveRoom();
-        }
-        else if (PhotonNetwork.InLobby)
-        {
-
-            PhotonNetwork.LeaveLobby();
-        }
-        PhotonNetwork.Disconnect();
-    }
 }

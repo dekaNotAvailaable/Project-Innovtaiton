@@ -40,13 +40,20 @@ public class PlayerMutiplayerHandle : MonoBehaviourPunCallbacks, IPunObservable
             if (i < Potions.Length)
             {
                 Potions[i].color = receivedPotionColors[i];
-                Debug.Log("Local colors:" + receivedPotionColors[i]);
+                // Debug.Log("Local colors:" + receivedPotionColors[i]);
             }
         }
         isStartLoopFinished = true;
         yield return null;
     }
-
+    public void UpdatePotionCountLocally()
+    {
+        if (photonView.IsMine)
+        {
+            remainingPotionCount = potionColor.GetActivePotionCount();
+            potionCount.text = remainingPotionCount.ToString();
+        }
+    }
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.IsWriting)
@@ -63,23 +70,25 @@ public class PlayerMutiplayerHandle : MonoBehaviourPunCallbacks, IPunObservable
             if (isStartLoopFinished)
             {
                 ReadPotionColors(stream);
-                Debug.Log("Start loop is finishewd reading colors ");
+                //  Debug.Log("Start loop is finishewd reading colors ");
             }
             else
             {
                 StartCoroutine(ApplyPotionAfterJoined(stream));
-                Debug.Log("start loop isnt finished so running coroutine insted");
+                // Debug.Log("start loop isnt finished so running coroutine insted");
             }
         }
     }
     private void ReadPotionIndex(PhotonStream stream)
     {
         remainingPotionCount = (int)stream.ReceiveNext();
+
         potionCount.text = remainingPotionCount.ToString();
     }
     private void SendPotionIndex(PhotonStream stream)
     {
         stream.SendNext(potionColor.GetActivePotionCount());
+        potionCount.text = potionColor.GetActivePotionCount().ToString();
 
     }
     private void SendPotionColors(PhotonStream stream)
@@ -99,7 +108,6 @@ public class PlayerMutiplayerHandle : MonoBehaviourPunCallbacks, IPunObservable
             receivedPotionColors[i].r = (float)stream.ReceiveNext();
             receivedPotionColors[i].g = (float)stream.ReceiveNext();
             receivedPotionColors[i].b = (float)stream.ReceiveNext();
-            Debug.Log("recieved new colors:" + receivedPotionColors[i]);
             if (i < Potions.Length)
             {
                 Potions[i].color = receivedPotionColors[i];
@@ -118,11 +126,12 @@ public class PlayerMutiplayerHandle : MonoBehaviourPunCallbacks, IPunObservable
 
     public void ActivateFreezePotionOnOtherClients()
     {
-        if (PhotonNetwork.IsConnected && photonView.IsMine)
+        if (PhotonNetwork.IsConnected)
         {
             photonView.RPC("ActivateFreezePotionRPC", RpcTarget.Others);
         }
     }
+
     [PunRPC]
     private void ActivateFreezePotionRPC()
     {

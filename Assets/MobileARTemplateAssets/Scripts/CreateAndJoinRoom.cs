@@ -80,12 +80,12 @@ public class CreateAndJoinRoom : MonoBehaviourPunCallbacks
     {
         if (PhotonNetwork.IsMasterClient)
         {
-            Debug.Log("Joined room as master client. Starting gameplay scene.");
+            //   Debug.Log("Joined room as master client. Starting gameplay scene.");
             PhotonNetwork.RaiseEvent(1, null, RaiseEventOptions.Default, SendOptions.SendReliable);
         }
         else
         {
-            Debug.Log("Joined room as client. Waiting for gameplay scene to start.");
+            //  Debug.Log("Joined room as client. Waiting for gameplay scene to start.");
         }
         PhotonNetwork.LoadLevel("Camera");
     }

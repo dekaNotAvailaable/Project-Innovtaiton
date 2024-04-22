@@ -12,7 +12,7 @@ public class ToggleImage : MonoBehaviour
     }
     private void ShowImage()
     {
-        Debug.Log(ImageCount + "/" + ImageToActive.Length);
+        // Debug.Log(ImageCount + "/" + ImageToActive.Length);
         ImageDisplayGameObject.sprite = ImageToActive[ImageCount];
     }
     public void Minus()

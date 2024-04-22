@@ -32,7 +32,7 @@ public class ColorCheck : MonoBehaviour
             if (ColorApproximatelyEqual(detectedColor, potionColor))
             {
                 SoundEffects.Instance.FoundPotionSound();
-                Debug.Log($"Detected color matches Potion {i + 1} color!");
+                // Debug.Log($"Detected color matches Potion {i + 1} color!");
                 poitionColor.DestroyPotion(i);
                 foundMatchingPotion = true;
                 break;

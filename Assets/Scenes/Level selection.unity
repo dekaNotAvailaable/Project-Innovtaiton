@@ -180,7 +180,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Hello and welcome to Potion Pandemonium
+  m_text: Welcome to Potion Pandemonium
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8989a0697ab1c5c45adb24d900512de3, type: 2}
   m_sharedMaterial: {fileID: 572314576500128122, guid: 8989a0697ab1c5c45adb24d900512de3,
@@ -294,7 +294,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 97.45942, y: -1915.2305}
+  m_AnchoredPosition: {x: 1061, y: 611}
   m_SizeDelta: {x: 355.3456, y: 192.812}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &358598465
@@ -1171,8 +1171,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -503.30432, y: 680}
-  m_SizeDelta: {x: 1238.9711, y: 108.3413}
+  m_AnchoredPosition: {x: 0.0002327, y: -1352.1}
+  m_SizeDelta: {x: 1300, y: 108.38}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1433640946
 MonoBehaviour:

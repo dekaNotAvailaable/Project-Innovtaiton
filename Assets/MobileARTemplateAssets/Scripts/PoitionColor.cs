@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
 public class PoitionColor : MonoBehaviour
 {
     public Image[] Potions;
@@ -8,10 +9,12 @@ public class PoitionColor : MonoBehaviour
     private HashSet<int> destroyedPotions = new HashSet<int>();
     private FreezePotion freezePotion;
     private ImmunityPotion immunityPotion;
+    private LevelChange lvlChange;
     void Start()
     {
         freezePotion = FindAnyObjectByType<FreezePotion>();
         immunityPotion = FindAnyObjectByType<ImmunityPotion>();
+        lvlChange = FindAnyObjectByType<LevelChange>();
         AssignRandomPotionColors();
     }
 
@@ -35,12 +38,20 @@ public class PoitionColor : MonoBehaviour
     {
         return destroyedPotions.Contains(potionIndex);
     }
+    private void GameFinish()
+    {
+        lvlChange.NextScene("Finish Game");
+    }
     public void DestroyPotion(int potionIndex)
     {
         if (Potions != null && potionIndex >= 0 && potionIndex < Potions.Length)
         {
             Destroy(Potions[potionIndex].gameObject);
             destroyedPotions.Add(potionIndex);
+            if (destroyedPotions.Count <= 0) 
+            {
+                GameFinish();
+            }
             if (Random.value < 0.5f)
             {
                 GetFreezePotion();

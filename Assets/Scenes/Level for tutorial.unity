@@ -305,6 +305,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonSound: {fileID: 1287585383}
   shutterSound: {fileID: 0}
+  potionFound: {fileID: 0}
+  shieldSound: {fileID: 0}
+  wrongColorBuzz: {fileID: 0}
 --- !u!1 &217697357
 GameObject:
   m_ObjectHideFlags: 0
@@ -1207,7 +1210,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b89e6bbe255250f499d21b6f401dd102, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundEffects: {fileID: 123284615}
 --- !u!1 &1514028585
 GameObject:
   m_ObjectHideFlags: 0
@@ -1846,8 +1848,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 456.92117, y: 154}
-  m_SizeDelta: {x: 926.38, y: 372.6385}
+  m_AnchoredPosition: {x: 443.00174, y: 142.40039}
+  m_SizeDelta: {x: 1035.8591, y: 444.9096}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2066396886
 MonoBehaviour:
@@ -1925,8 +1927,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 45d01f07f44cd2440a6e28af9fd9ec7d, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
